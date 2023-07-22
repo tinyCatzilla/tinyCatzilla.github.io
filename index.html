@@ -19,7 +19,7 @@
             function refreshTime() {
                 const timeDisplay = document.getElementById("time");
                 let options = {
-                    timeZone: "EST",
+                    timeZone: "America/New_York",
                     hour: "numeric",
                     minute: "numeric",
                     weekday: "long",
@@ -36,7 +36,7 @@
 
             // copyText script
             function discordCopy() {
-                navigator.clipboard.writeText("catzilla#1729");
+                navigator.clipboard.writeText("@catzilla_");
                 // change css for copyAlert to display
                 var copyAlert = document.getElementsByClassName("copyAlert")[0];
                 copyAlert.style.display = "block";
@@ -52,14 +52,15 @@
     <div id="wrap">
     <body>
         <div class="navbar">
-            <a class="active" href="index.html"><i class="fa-solid fa-house"></i>home</a>
-            <a href="math.html"><i class="fa-solid fa-square-root-variable"></i>math</a>
-            <a href="cooking.html"><i class="fa-solid fa-utensils"></i>cooking</a>
-            <a href="music.html"><i class="fa-solid fa-music"></i>music</a>
-            <a href="photos.html"><i class="fa-solid fa-image"></i>photos</a>
-            <a href="gaming.html"><i class="fa-solid fa-gamepad"></i>gaming</a>
-            <a href="indexOLD.html"><i class="fa-solid fa-ruler"></i>plan</a>
-            <a href="sanctuary.html"><i class="fa-solid fa-cat"></i>sanctuary</a>
+          <a class="active" href="index.html"><i class="fa-solid fa-house"></i>home</a>
+          <a href="projects.html"><i class="fa-solid fa-computer"></i>projects</a>
+          <a href="math.html"><i class="fa-solid fa-square-root-variable"></i>math</a>
+          <a href="cooking.html"><i class="fa-solid fa-utensils"></i>cooking</a>
+          <a href="music.html"><i class="fa-solid fa-music"></i>music</a>
+          <a href="photos.html"><i class="fa-solid fa-image"></i>photos</a>
+          <a href="gaming.html"><i class="fa-solid fa-gamepad"></i>gaming</a>
+          <a href="indexOLD.html"><i class="fa-solid fa-ruler"></i>plan</a>
+          <a href="sanctuary.html"><i class="fa-solid fa-cat"></i>sanctuary</a>
         </div>
         <div class="copyAlert">
             <strong>Text copied!</strong>
@@ -85,13 +86,6 @@
             <li class="biolist"><i class="fa-solid fa-location-dot"></i> Toronto, Canada</p>
             <li class="biolist"><i class="fa-solid fa-clock"></i> <span id="time"> </span></p>
         </ul> 
-
-
-        
-        <!-- <p><i class="fa-solid fa-user"></i> 19 years old</p>
-        <p><i class="fa-solid fa-graduation-cap"></i> 2nd year pursuing a Mathematics & Its Applications Specialist (Probability/Statistics)</p>
-        <p><i class="fa-solid fa-location-dot"></i> Toronto, Canada</p>
-        <p><i class="fa-solid fa-clock"></i> <span id="time"> </span></p> -->
         <h2>
             <pink>Hotlinks:</pink>
         </h2>
@@ -100,25 +94,13 @@
             <li class="projectlist"> <a href="panang.html">Panang Curry</a></li>
         </ul> 
 
-
-
-
-
         <h2>
             <pink>Socials:</pink>
         </h2>
         <p>
             <a id="button2" href="#" onclick="discordCopy()">
                 <i class="fa-brands fa-discord fa-2xl logo"></i>
-                <span class = "caption">catzilla#1729</span>
-            </a>
-            <a id="button2" href="https://twitter.com/tinyCatzilla" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-twitter fa-2xl logo"></i>
-                <span class = "caption">@tinyCatzilla</span>
-            </a>
-            <a id="button2" href="https://mathstodon.xyz/@catzilla" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-mastodon fa-2xl logo"></i>
-                <span class = "caption">@catzilla@mathstodon.xyz</span>
+                <span class = "caption">@catzilla_</span>
             </a>
             <a id="button2" href="https://steamcommunity.com/id/catzillaaa/" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-steam fa-2xl logo"></i>
