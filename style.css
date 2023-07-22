@@ -1,0 +1,280 @@
+red{
+    color: rgb(255, 0, 0);
+}
+
+orange{
+    color: rgb(233, 166, 66);
+}
+
+purple{
+    color: rgb(206, 103, 238);
+}
+
+bluepurp{
+  color: rgb(146, 120, 248);
+}
+
+pink{
+  color: rgb(255, 130, 175);
+}
+
+a:link {
+    color: rgb(88, 165, 236);
+    text-decoration: none;
+  }
+
+a:visited {
+    color: rgb(88, 165, 236);
+    text-decoration: none;
+  }
+
+a:active {
+    color: rgb(255, 130, 175);
+    text-decoration: none;
+  }
+
+a:hover {
+    color: rgb(255, 130, 175);
+    text-decoration: none;
+  }
+
+html{
+  background:rgb(28, 30, 31);
+  background-color: rgb(28, 30, 31);
+}
+
+body{
+    background-color: rgb(28, 30, 31);
+    color:white;
+}
+
+#wrap{
+    width: 60%;
+    margin: auto;
+}
+
+.title {
+  font-size: 48px;
+}
+
+.subtitle {
+  font-size: 24px;
+}
+
+.mathlist {
+    list-style: none;
+    padding: 20px 70px;
+    background-image: url("./images/pogcat.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 60px;
+}
+
+cattag{
+  font-size: 24px;
+}
+
+ /* Style the navigation bar */
+.navbar {
+  width: 100%;
+  background-color: rgb(28, 30, 31);
+  border: 1px solid #373B3E;
+  overflow: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Navbar links */
+.navbar a {
+  text-align: center;
+  padding: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  transition: all 0.2s ease-out;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  color: rgb(255, 130, 175);
+}
+
+/* Current/active navbar link */
+.active {
+  color: #fff;
+  /* font-weight: bold; */
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+} 
+
+/* scrollbar  */
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+width: auto!important;
+}
+
+*::-webkit-scrollbar-track {
+background: #303134!important;
+}
+
+*::-webkit-scrollbar-thumb {
+background-color: #44464a!important;
+border: 3px solid #303134!important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+background-color: #57595e!important;
+border: 3px solid #303134!important;
+}
+*::-webkit-scrollbar-thumb :active {
+background-color: #6b6e73!important;
+border: 3px solid #303134!important;
+}
+
+.content {
+
+  display: none;
+  overflow: hidden;
+}
+
+.collapsible {
+  background: none;
+  border: none;
+  color: rgb(88, 165, 236);
+  padding-bottom:10px;
+  font-size: 15pt
+}
+
+.active{
+  color: rgb(88, 165, 236);
+}
+
+.collapsible:hover {
+  color: rgb(255, 130, 175);
+}
+
+#ToC{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  
+}
+
+#ToCFont{
+  font-size: 15pt;
+  padding-left:20px;
+}
+
+.Problem{
+  background-color: rgb(39, 42, 54);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 5px
+}
+
+.Definition{
+  background-color: rgb(39, 42, 54);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 5px
+
+}
+
+img{
+  max-width:100%;
+}
+
+.logo {
+  color:#fff;
+  text-decoration-color: none;
+}
+
+#button2 {
+  padding: 20px;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  text-decoration-color: none;
+  color: #ffffff;
+  background-color: rgb(26, 27, 27);
+  border-radius: 6px;
+  border: 2px solid #373B3E;
+  outline: none;
+  display: inline-block;
+  justify-content: left;
+  height:auto;
+  transition: all 0.2s ease-out;
+  margin-bottom:10px;
+  margin-right:5px;
+  }
+  
+  #button2 a {
+  color: #ffffff;
+  text-decoration: none;
+  text-decoration-color: none;
+  }
+  
+  #button2:hover {
+    background-color: rgb(22, 24, 24);
+    /* color: rgb(255, 130, 175); */
+    border: 2px solid rgb(255, 130, 175);
+  }
+  
+  
+.caption {
+  display: block;
+  padding-top: 10px;
+}
+
+.copyAlert {
+  display: none;
+  position: fixed;
+  top: 50;
+  /* centre horizontally */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(206, 103, 238);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.projectlist {
+  padding: 5px 0px;
+  font-size: 20px;
+}
+
+.biolist {
+  text-indent: -20px;
+}
+
+.cookinglist {
+  padding: 5px 0px;
+  font-size: 20px;
+}
+
+.gaminglist {
+  padding: 5px 0px;
+  font-size: 20px;
+}
+
+h2 + ul {
+  margin-top: -20px;
+}
+
+h2 + p {
+  margin-top: -10px;
+}

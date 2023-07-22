@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>catzilla! inequalities</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="images/favicon_io/site.webmanifest">
+        <link href="style.css" rel="stylesheet" >
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+        <style>
+        body {
+            font-family: 'Nunito', serif;
+        }
+        </style>
+        <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <div id="wrap">
+    <body>
+        <div class="navbar">
+            <a class="active" href="index.html"><i class="fa-solid fa-house"></i>home</a>
+            <a href="math.html"><i class="fa-solid fa-square-root-variable"></i>math</a>
+            <a href="cooking.html"><i class="fa-solid fa-utensils"></i>cooking</a>
+            <a href="music.html"><i class="fa-solid fa-music"></i>music</a>
+            <a href="photos.html"><i class="fa-solid fa-image"></i>photos</a>
+            <a href="gaming.html"><i class="fa-solid fa-gamepad"></i>gaming</a>
+            <a href="indexOLD.html"><i class="fa-solid fa-ruler"></i>plan</a>
+            <a href="sanctuary.html"><i class="fa-solid fa-cat"></i>sanctuary</a>
+          </div>
+        <h1>Inequalities</h1>
+        A collection of useful inequalities and their applications. Many problems taken from Cauchy-Schwarz Masterclass by Steele. 
+        Within each section, problems generally increase in difficulty.
+        <br><br>
+
+        <hr>
+        <div id="ToCFont">
+            <a href="#Cauchy">1. Cauchy-Schwarz</a>
+            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+            <div class="content">
+            <ul id="ToC">
+                <li>
+                    <a href="#CauchyReal">Def. Cauchy-Schwarz for Real Numbers</a>
+                </li>
+                <li>
+                    <a href="#1Trick">1.1 The 1-Trick</a>
+                </li>
+                <li>
+                    <a href="#Splitting">1.2 The Splitting Trick</a>
+                </li>
+                <li>
+                    <a href="#CauchyInner">Def. Cauchy-Schwarz for Inner Product Spaces</a>
+                </li>
+                <li>
+                    <a href="#Gradient">1.3 The Gradient is the "Steepest Ascent"</a>
+                </li>
+            </ul>
+            </div>
+            <br>
+            <a href="#Jensen">2. Jensen's Inequality</a>
+            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+            <div class="content">
+            <ul id="ToC">
+                <li>
+                    <a href="#JensenDef">Def. Jensen's Inequality</a>
+                </li>
+                <li>
+                    <a href="#Convex">Def. Convex Function</a>
+                </li>
+                <li>
+                    <a href="#JensenEq">2.1 Jensen's Inequality, Equality Condition</a>
+                </li>
+                <li>
+                    <a href="#CubeTriple">2.2 A Perfect Cube and a Triple Product</a>
+                </li>
+                <li>
+                    <a href="#Harmonic">2.3 Divergence of the Harmonic Series</a>
+                </li>
+            </ul>
+            </div>
+            <br>
+            <a href="#AMGM">3. AM-GM</a>
+            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+            <div class="content">
+            <ul id="ToC">
+                <li>
+                    <a href="#AMGMDef">Def. AM-GM</a>
+                </li>
+                <li>
+                    <a href="#PurePowers">3.1 Bounds by Pure Powers</a>
+                </li>
+                <li>
+                    <a href="#2002CMOP3">3.2 Canadian Math Olympiad 2002 - Problem 3</a>
+                </li>
+                <li>
+                    <a href="#SuperadditivityGM">3.3 Superadditivity of the Geometric Mean</a>
+                </li>
+                <li>
+                    <a href="#Carleman">3.4 Carleman's Inequality</a>
+                </li>
+            </ul>
+            </div>
+            <br>
+            <a href="#Triangle">4. The Triangle Inequality</a>
+            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+            <div class="content">
+            <ul id="ToC">
+                <li>
+                    <a href="#TriangleMetric">Def. Triangle Inequality, Metric Spaces</a>
+                </li>
+                <li>
+                    <a href="#TriangleCauchy">4.1 Connection to Cauchy-Schwarz</a>
+                </li>
+                <li>
+                    <a href="#TriangleNorm">Def. Triangle Inequality, Normed Spaces</a>
+                </li>
+                <li>
+                    <a href="#TriangleInner">Def. Triangle Inequality, Inner Product Spaces</a>
+                </li>
+                <li>
+                    <a href="#Ptolemy">4.2 Ptolemy's Inequality</a>
+                </li>
+                <li>
+                    <a href="#PaB118">4.3 Putnam and Beyond - Problem 118</a>
+                </li>
+            </ul>
+            </div>
+            <br>
+            <a href="#Rearrangement">5. The Rearrangement Inequality</a>
+            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+            <div class="content">
+            <ul id="ToC">
+                <li>
+                    <a href="#RearrangementProblem">5.1 The Rearrangement Inequality</a>
+                </li>
+                <li>
+                    <a href="#RearrangementLB">5.2 The Rearrangement Inequality, Lower Bound</a>
+                </li>
+                <li>
+                    <a href="#ChebyshevSum">5.3 Chebyshev's Sum Inequality</a>
+                </li>
+                <li>
+                    <a href="#NLRearrangement">5.4 The Nonlinear Rearrangement Inequality</a>
+                </li>
+            </ul>
+            </div>
+            <br>
+            <a href="#Ordering">6. Inequalities with Ordering</a>
+            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+            <div class="content">
+            <ul id="ToC">
+                <li>
+                    <a href="#Majorization">Def. Majorization</a>
+                </li>
+                <li>
+                    <a href="#Karamata">6.1 Karamata's (Weighted) Inequality</a>
+                </li>
+                <li>
+                    <a href="#JensenAgain">6.2 Reproving Jensen's Inequality</a>
+                </li>
+                <li>
+                    <a href="#ChebyshevOrder">6.3 Chebyshev's Order Inequality</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <hr>
+
+        <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+
+            function changeText(objButton)
+            {
+                if (objButton.innerHTML == "[+]") {
+                    objButton.innerHTML = "[-]";
+                }
+                else{
+                    objButton.innerHTML = "[+]";
+                }
+            }
+
+        </script>
+
+
+        <u><h2 id="Cauchy">Cauchy-Schwarz</h2></u>
+        For the beginner Pallas's Cat, we first state Cauchy-Schwarz over the reals.
+        <br><br>
+        <div class="Definition">
+        <bluepurp><b>[Cauchy-Schwarz for Real Numbers]</b></bluepurp><a name="CauchyReal"></a>
+        For real sequences \(a_1,\ldots,a_n\) and \(b_1,\ldots,b_n\), it holds that
+        \[\sum_{k=1}^n a_kb_k\leq \sqrt{\sum_{k=1}^n a_k^2}\sqrt{\sum_{k=1}^n b_k^2}.\]
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[The 1-Trick]</b></orange> <a name="1Trick"></a>
+        Show that for real sequences \(a_1,\ldots, a_n\), we have
+        \[\sum_{k=1}^n a_k\leq \sqrt{n}\sqrt{\sum_{k=1}^n a_k^2}.\]
+        <br>
+        <i>Proof. </i>
+        One applies Cauchy-Schwarz with the given sequence \(\{a_k\}_{k=1}^n\) and \(\{b_k=1\}_{k=1}^n\). 
+        The desired identity immediately follows, giving a useful trick to apply Cauchy-Schwarz on a single sequence by trivially taking \(\{b_k=1\}_{k=1}^n\).
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[The Splitting Trick]</b></orange> <a name="Splitting"></a>
+        Show that for real sequences \(a_1,\ldots, a_n\) and reals \(r+s=1\) we have
+        \[\sum_{k=1}^n a_k\leq \sqrt{\sum_{k=1}^n a_k^{2r}}\sqrt{\sum_{k=1}^n a_k^{2s}},\]
+        <br>
+        <i>Proof. </i>
+        Define sequences \(\{(a_k)^r\}_{k=1}^n\) and \(\{(a_k)^s\}_{k=1}^n.\) 
+        Observe that \(\sum_{k=1}^n (a_k)^r \cdot (a_k)^s=\sum_{k=1}^n a_k\) follows from \(r+s=1\), encouraging the application of Cauchy-Schwarz to our sequences. 
+        Again, the desired identity immediately follows.<br>
+        Note that the 1-Trick is a special case of this identity, where \(r=1, s=0\). 
+        Thus, this can be seen as a more generalized form for bounding single sequences with Cauchy-Schwarz.
+        \(\blacksquare\)
+        </div>
+        <br>
+        The next problem(s) in this section will require more mathematical knowledge, 
+        as well as Cauchy-Schwarz in it's far more powerful inner product form.
+        <br><br>
+        <div class="Definition">
+        <bluepurp><b>[Cauchy-Schwarz for Inner Product Spaces]</b></bluepurp><a name="CauchyInner"></a>
+        For vectors \(u,v\) in an inner product space, we have the inequality
+        \[|\langle u,v \rangle|\leq \Vert u \Vert \Vert v \Vert,\]
+        with equality iff \(u,v\) are scalar multiples of each other.
+        Note that the earlier definition is retrieved by considering \(\mathbb{R^n}\) equipped with the standard inner product.
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[The Gradient in \(\mathbb{R^n}\) is the "Steepest Ascent"]</b></orange> <a name="Gradient"></a>
+        Show that \(\nabla f(x)\) points in the direction of steepest ascent (assuming \(\nabla f(x)\neq 0\).) 
+        In other words, show that for all unit vectors \(u,\) the directional derivative along \(u\) is maximized in the direction \(\frac{\nabla f(x)}{\Vert\nabla f(x) \Vert}\), 
+        (the gradient normalized to a unit vector).
+        <br><br>
+        <i>Proof. </i>
+        The directional derivative along a vector \(v\) is equal to \(\langle \nabla f(x), v \rangle\) under the standard inner product. 
+        Thus, our claim becomes
+        \[\Big\langle \nabla f(x), u \Big\rangle\leq \Big\langle \nabla f(x), \frac{\nabla f(x)}{\Vert\nabla f(x) \Vert} \Big\rangle\]
+        with equality iff \(u=\frac{\nabla f(x)}{\Vert\nabla f(x) \Vert}\).<br>
+        By direct computation, the righthand bound is equal to \(\Vert\nabla f(x) \Vert\). (Verify!). <br>
+        Furthermore, the left of the inequality can be bounded with Cauchy-Schwarz by \(\Vert\nabla f(x) \Vert \Vert u \Vert\). 
+        And as \(u\) is a unit vector, its norm is 1. Thus, our bound from Cauchy-Schwarz is just \(\Vert\nabla f(x) \Vert\). 
+        Observe that this bound equals our computation for the right side, and by Cauchy-Schwarz, equality is attained iff \(\nabla f(x)\) and \(u\) are proportional. 
+        Hence, the directional derivative is maximized along the unit vector in the direction of \(\nabla f(x)\).
+        \(\blacksquare\)
+        </div>
+        <br>
+        <hr>
+
+        <h2 id="Jensen">Jensen's Inequality</h2>
+        There is no better way to begin this section than with the definition of Jensen's inequality, complete with a proof!
+        <br><br>
+        <div class="Definition">
+        <bluepurp><b>[Jensen's Inequality]</b></bluepurp><a name="JensenDef"></a>
+        Let \(w_k, k=1,\ldots,n\) be nonnegative real numbers such that
+        \[\sum_{k=1}^n w_k=1.\]
+        Then given any convex function \(f: [a,b]\to\mathbb{R}\), for all \(x_k\in [a,b], k=1,\ldots,n\) one has
+        \[f\Big(\sum_{k=1}^n w_k x_k\Big)\leq \sum_{k=1}^n w_kf(x_k).\]
+        Analogously, if \(f\) is concave, we have the reverse inequality.
+        <br><br>
+        <i>Proof. </i>
+        Let \(f\) be convex. Then we know from basic single-variable Calculus that for \(a\leq b\) we have
+        \[f'(a) \leq\frac{f(b)-f(a)}{b-a}\leq f'(b).\]
+        Define \(\overline{x}=\sum_{k=1}^n w_kx_k\), and choose an arbitrary \(x_k\).<br>
+        If \(x_k\geq \overline{x}\), we have the inequality
+        \[f'(\overline{x})(x_k-\overline{x}) \leq f(x_k)-f(\overline{x})\]
+        from our convexity inequality above directly by multiplying over the denominator.<br>
+        Else if \(x_k\leq \overline{x}\), we get the same inequality through multiplying over the denominator and then multiplying by \(-1\). <br>
+        From here, consider the following:
+        \begin{align*}
+        f'(\overline{x})(x_k-\overline{x}) &\leq f(x_k)-f(\overline{x})\\
+        \sum_{k=1}^n w_k\cdot(f'(\overline{x})(x_k-\overline{x})) &\leq \sum_{k=1}^n w_k\cdot (f(x_k)-f(\overline{x}))\\
+        f'(\overline{x})\Big(\sum_{k=1}^n w_k x_k-\overline{x}\Big) &\leq \sum_{k=1}^n w_k f(x_k)-f(\overline{x})&&\text{\(\sum_{k=1}^n w_k=1\), so ignore it as a coefficient where needed.}\\
+        0 &\leq \sum_{k=1}^n w_k f(x_k)-f(\overline{x})&&\text{\(\overline{x}-\sum_{k=1}^n w_k x_k=0\) by definition of \(\overline{x}\).}\\
+        f\Big(\sum_{k=1}^n w_kx_k\Big) &\leq \sum_{k=1}^n w_k f(x_k)&&\text{Rearrange and plug in \(\overline{x}\).}
+        \end{align*}
+        Completing our claim. For \(f\) concave, the argument is analogous, but with reversed inequalities.
+        \(\blacksquare\)
+        </div>
+        <br>
+        Not bad. We are almost ready to proceed, but before doing so it might be good to go over the definition of a convex function.
+        <br><br>
+        <div class="Definition">
+        <bluepurp><b>[Convex Function]</b></bluepurp><a name="Convex"></a>
+        A function \(f: [a,b]\to\mathbb{R}\) is convex iff for \(x_1,x_2\in [a,b]\) and \(0\leq t \leq 1\) we have
+        \[f(tx_1+(1-t)x_2)\leq tf(x_1)+(1-t)f(x_2).\]
+        Additionally, if this inequality is strict for all \(x_1\neq x_2\) and \(0\lt t \lt 1\), we say the function is strictly convex.<br>
+        Equivalently is that for \(f\) twice differentiable, \(f''(x)\geq 0\) implies convexity, with strict inequality implying strict convexity.
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Jensen's Inequality, Equality Condition]</b></orange> <a name="JensenEq"></a>
+        Show that for strictly convex functions, Jensen's inequality has equality iff \(x_1=\ldots=x_n.\)
+        <br><br>
+        <i>Proof. </i>
+        <red>Not written up yet</red>
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[A Perfect Cube and a Triple Product]</b></orange> <a name="CubeTriple"></a>
+        Show that if \(x,y,z>0\) and \(x+y+z=1\) then one has
+        \[64\leq \Big(1+\frac{1}{x}\Big)\Big(1+\frac{1}{y}\Big)\Big(1+\frac{1}{z}\Big).\]
+        <br>
+        <i>Proof. </i>
+        The title gives us a bit of a clue, in that there seems to be something suspicious about powers, products, and their relationship. 
+        The natural idea? Take the log of both sides, and see if we can spot anything. We make sure to write \(64\) as \(4^3\), and doing so yields
+        \[3\log(4)\leq \log\Big(1+\frac{1}{x}\Big)+\log\Big(1+\frac{1}{y}\Big)+\log\Big(1+\frac{1}{z}\Big)\]
+        after applying the product-to-sum property of log. Here it becomes clear how to apply Jensen's inequality for this bound.
+        Choose the function \(\log(1+\frac{1}{x})\) and apply Jensen's on it with terms \(x,y,z\) and equal weighting for
+        \[\log\Big(1+\frac{3}{x+y+z}\Big)\leq \frac{1}{3}\Big(\log\Big(1+\frac{1}{x}\Big)+\log\Big(1+\frac{1}{y}\Big)+\log\Big(1+\frac{1}{z}\Big)\Big).\]
+        Then, applying the given information \(x+y+z=1\) and multiplying by 3 finds our way back to the log inequality that inspired us to use Jensen's Inequality.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Divergence of the Harmonic Series]</b></orange> <a name="Harmonic"></a>
+        Show that the harmonic series, \(H\), diverges using Jensen's inequality.
+        <i>Hint: Take groups of 3, and find a contradiction.</i>
+        <br><br>
+        <i>Proof. </i>
+        Suppose for the sake of contradiction that \(H\) converges. 
+        It makes sense to apply Jensen's inequality on \(f=\frac{1}{x}\), since this defines the harmonic series. 
+        So, following the hint, let's see what Jensens gives for groups of 3 Harmonic series terms. Each group takes the form  
+        \(\frac{1}{x-1}+\frac{1}{x}+\frac{1}{x+1}\) telling us that our terms for Jensen's Inequality will be \(x-1,x\) and \(x+1\). 
+        Choosing equal weights and applying Jensen yields
+        \[\frac{1}{x}\leq \frac13(\frac{1}{x-1}+\frac{1}{x}+\frac{1}{x+1}).\]
+        Multiplying over 3 nets \(\frac{3}{x}\) as a lower bound for each group of 3 terms in the Harmonic Series. 
+        We can now cleverly apply this bound to groups of 3 beginning with the <u>second</u> term, causing our fractions to simplify nicely for
+        \[H\geq 1+\frac{3}{3}+\frac{3}{6}+\ldots=1+H,\]
+        a contradiction.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <hr>
+
+        <h2 id="AMGM">AM-GM</h2>
+        <div class="Definition">
+        <bluepurp><b>[AM-GM]</b></bluepurp><a name="AMGMDef"></a>
+        Let \(p_1+\ldots+p_n=1\). Then, for any nonnegative real sequence \(x_1,\ldots,x_n\), we have
+        \[\prod_{k=1}^n x_k^{p_k}\leq \sum_{k=1}^n p_kx_k.\]
+        <br>
+        <i>Proof. </i>
+        \(\exp(x)\) is a convex function over \(\mathbb{R}\), so we can apply Jensen's inequality on reals \(y_1,\ldots,y_n\) for
+        \[\exp(\sum_{k=1}^n p_ky_k)\leq\sum_{k=1}^n p_k\exp(y_k).\]
+        Setting \(x_k=\exp(y_k)\) immediately yields
+        \[\prod_{k=1}^n x_k^{p_k}\leq \sum_{k=1}^n p_kx_k,\]
+        which is our desired inequality. Moreover, since \(\exp(y_k)\) is bijective onto the positive reals, this holds for all real sequences \(x_1,\ldots,x_n\) with equality iff \(x_1=\ldots=x_n\).
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Bounds by Pure Powers]</b></orange> <a name="PurePowers"></a>
+        Prove that for positive \(x,y,\alpha,\beta\) we have
+        \[x^\alpha y^\beta\leq \frac{\alpha}{\alpha+\beta}x^{\alpha+\beta} + \frac{\beta}{\alpha+\beta}y^{\alpha+\beta}\]
+        <br>
+        <i>Proof. </i>
+        Let \(x_1=x^{\alpha+\beta}, x_2=y^{\alpha+\beta}, p_1=\frac{\alpha}{\alpha+\beta}, p_2=\frac{\beta}{\alpha+\beta}.\) 
+        Verify that these meet the conditions to apply AM-GM, which immediately yields the desired identity. 
+        Additionally, take a second to verify how this argument easily extends to more than just 2 terms.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Canadian Math Olympiad 2002 - Problem 3]</b></orange> <a name="2002CMOP3"></a>
+        Prove that for all positive reals \(a,b,c\),
+        \[a+b+c \leq \frac{a^3}{bc}+\frac{b^3}{ac}+\frac{c^3}{ab},\]
+        and determine when equality occurs.
+        <br><br>
+        <i>Proof. </i>
+        Observe that the right hand is equivalent to \(\frac{1}{abc}\cdot (a^4+b^4+c^4).\) 
+        Multiplying this over to the left, our target inequality becomes \(a^2bc+ab^2c+abc^2 \leq a^4+b^4+c^4\). From here, the form of a pure power bound pokes out. 
+        Applying AM-GM to \(a^2bc\) yields the bound \(\frac{2a^3}{3}+\frac{b^3}{3}+\frac{c^3}{3}\), with analogous permutations for \(ab^2c\) and \(abc^2\). 
+        Thus, summing the bounds of each term nets our desired inequality, and we simply recall that AM-GM attains equality iff \(a=b=c.\)
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Superadditivity of the Geometric Mean]</b></orange> <a name="SuperadditivityGM"></a>
+        Show that for nonnegative \(a_k\) and \(b_k\) for \(1\leq k\leq n\), one has
+        \[\Big(\prod_{k=1}^n a_k\Big)^{\frac{1}{n}}+\Big(\prod_{k=1}^n b_k\Big)^{\frac{1}{n}}\leq \Big(\prod_{k=1}^n (a_k+b_k)\Big)^{\frac{1}{n}}\]
+        <br><br>
+        <i>Proof. </i>
+        We begin by dividing everything by the right side of the inequality to find a form more familiar for AM-GM. This yields
+        \[\Big(\prod_{k=1}^n\frac{a_k}{(a_k+b_k)}\Big)^{\frac{1}{n}}+\Big(\prod_{k=1}^n\frac{b_k}{(a_k+b_k)}\Big)^{\frac{1}{n}}\leq 1.\]
+        Blindly applying AM-GM on these products finds the upper bound
+        \[\frac{1}{n}\Big(\sum_{k=1}^n\frac{a_k}{(a_k+b_k)}+\sum_{k=1}^n\frac{b_k}{(a_k+b_k)}\Big)\]
+        Which trivially evaluates to 1. A surprisingly easy problem.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Carleman's Inequality]</b></orange> <a name="Carleman"></a>
+        Show that for each sequence of positive real numbers \(a_1,a_2,\ldots\) one has the inequality
+        \[\sum_{k=1}^\infty(a_1a_2\cdots a_k)^{\frac{1}{k}}\leq e\sum_{k=1}^\infty a_k\]
+        <br>
+        <i>Proof. </i>
+        <red>Not written up yet</red>
+        \(\blacksquare\)
+        </div>
+        <br>
+        <hr>
+        <h2 id="Triangle">The Triangle Inequality</h2>
+        <div class="Definition">
+        <bluepurp><b>[Triangle Inequality, Metric Spaces]</b></bluepurp><a name="TriangleMetric"></a>
+        For metric spaces \((X,d)\), we have the Triangle Inequality
+        \[d(x,y)\leq d(x,z) + d(z,y),\]
+        which is an axiom of the metric \(d\).
+        </div>
+        <br>
+        Recall that any inner product space \((V,\langle\cdot\rangle)\) induces a norm given by
+        \[\Vert v \Vert= \sqrt{\langle v,v \rangle},\]
+        and that every normed space \((V,\Vert\cdot\Vert)\) induces a metric given by
+        \[d(x,y)=\Vert y-x, y-x \Vert.\]
+        Thus, as every inner product space induces a normed space, and every normed space induces a metric space, the Triangle Inequality must hold in these spaces as well. <br>
+        But this raises some questions. Is the Triangle Inequality also taken as an axiom for normed and inner product spaces, as it is in metric spaces? 
+        What does the triangle inequality look like in these spaces?
+        Before tackling these questions, it is quite interesting to first prove the Triangle Inequality for the Euclidean Distance metric.
+        <br><br>
+        <div class="Problem">
+        <orange><b>[Connection to Cauchy-Schwarz]</b></orange> <a name="TriangleCauchy"></a>
+        Prove that the Euclidean Distance metric in \(\mathbb{R}^n\) satisfies the Triangle Inequality by showing that it is equivalent to Cauchy-Schwarz over the reals.
+        <br><br>
+        <i>Proof. </i>
+        Let \(d(x,y)=\sqrt{\sum_{i=1}^n (y_i-x_i)^2}\), the Euclidean Distance. 
+        As a lemma, observe that by the definition of \(d(x,y)\), \(d(x+t,y+t)=d(x,y)\). 
+        Thus, to show the triangle inequality, it suffices to show
+        \[d(0,y-x)\leq d(0,z-x) + d(z-x,y-x).\]
+        Your natural instinct may drive you to relabel left to write as \(d(0,a)\leq d(0,b) + d(a,b)\), but stopping to consider our end goal gives intuition to why this is a mistake. 
+        By that, I mean that we are looking towards Cauchy-Schwarz, which has the product of two variables on the left side. 
+        So instead of labelling \(x-y\) as a single vector, we should make some effort to label it as a function of two, while letting the pre-existing sum take care of the right side. <br>
+        Still, I think the correct relabelling is difficult to spot, as it only becomes nice after simplification. We take \(a=z-x\) and \(b=y-z\) for
+        \[d(0,a+b)\leq d(0,a) + d(a,a+b)=d(0,a) + d(0,b),\]
+        where equality follows from the definition of \(d(x,y)\). 
+        From here, we square the inequality with respect to \(d(x,y)\)'s definition, yielding
+        \[\sum_{k=1}^n (a_k+b_k)^2\leq \sum_{k=1}^n a_k^2 + 2\sqrt{\sum_{k=1}^n a_k^2}\sqrt{\sum_{k=1}^n b_k^2} + \sum_{k=1}^n b_k^2.\]
+        Where we can finally see notions of Cauchy-Schwarz. Indeed, after some simplification we have
+        \[\sum_{k=1}^n a_kb_k\leq \sqrt{\sum_{k=1}^n a_k^2}\sqrt{\sum_{k=1}^n b_k^2},\]
+        which is equivalent to Cauchy-Schwarz.<br>
+        Wow! \(\blacksquare\)
+        <br>
+        <img src="./images/wow1.png" alt="Pallas's cat">
+        </div>
+        <br>
+        That problem lends some intuition towards a connection between the Triangle Inequality and Cauchy-Schwarz.
+        Unfortunately though, it hinged quite heavily on the definition of Euclidean Distance, and we find that in general the Triangle Inequality is not equivalent to Cauchy-Schwarz. 
+        To finally answer our earlier questions, we present two definitions.
+        <br><br>
+        <div class="Definition">
+        <bluepurp><b>[Triangle Inequality, Normed Spaces]</b></bluepurp><a name="TriangleNorm"></a>
+        For normed spaces \((V,\Vert\cdot\Vert)\), we have the Triangle Inequality
+        \[\Vert x+y\Vert\leq \Vert x\Vert + \Vert y\Vert\]
+        which is also axiomatic for the norm \(\Vert\cdot\Vert\).
+        </div>
+        <br>
+        <div class="Definition">
+        <bluepurp><b>[Triangle Inequality, Inner Product Spaces]</b></bluepurp><a name="TriangleInner"></a>
+        For inner product spaces \((V,\langle\cdot\rangle)\), we have the Triangle Inequality given by
+        \[\Vert x+y\Vert\leq \Vert x\Vert + \Vert y\Vert,\]
+        where \(\Vert\cdot\Vert\) is the induced norm.<br>
+        Additionally, we have equality when \(a=0\), or \(b=0\), or both \(a,b\neq 0\) and \(b=\lambda a\) for \(\lambda>0\) 
+        </div>
+        <br>
+        As our previous problem may have alluded to, the proof follows from Cauchy-Schwarz on Inner Product Spaces! 
+        This is why the equality condition for Cauchy-Schwarz appears as part of this equality condition,
+        as well as why the more general norm and metric only get the Triangle Inequality axiomatically. Cool stuff.
+        <br><br>
+        <div class="Problem">
+        <orange><b>[Ptolemy's Inequality]</b></orange> <a name="Ptolemy"></a>
+        Prove that for points A,B,C,D
+        \[\overline{AC}\cdot\overline{BD} \leq \overline{AB}\cdot\overline{CD} + \overline{BC}\cdot\overline{AD}.\]
+        A special case of this is for points forming a convex quadrilaterals which this inequality can be succincted stated as 
+        "the product of the diagonals is bounded by the sum of the products of the opposite sides."
+        <br><br>
+        <i>Proof. </i>
+        Before anything, let's convert this problem to use the notation \(d(x,y)\) for Euclidean Distance.
+        \[d(A,C)\cdot d(B,D)\leq d(A,B)\cdot d(C,D) + d(B,C)\cdot d(A,D).\]
+        Using the translation property, let's move everything back by D. 
+        You can visualize this as translating all the points back so that \(D\) is on the origin. <br> 
+        We label our new points \(A-D=a, B-D=b,C-D=c\) and naturally, \(D=0\), yielding
+        \[d(a,c)\cdot d(b,0)\leq d(a,b)\cdot d(c,0) + d(b,c)\cdot d(a,0).\]
+        Additionally, recall from earlier that the Euclidean distance of two vectors \(d(a,b)=\Vert b-a \Vert\) under the standard inner product. Thus, we can rewrite our problem as
+        \[\Vert c-a \Vert \Vert b \Vert \leq \Vert b-a \Vert \Vert c \Vert + \Vert c-b \Vert \Vert a \Vert.\]
+        From here, the triangle equality is already beginning to show; if only we could get rid of these pesky single-variable norms. 
+        Following this intuition, we divide everything by \(\Vert a \Vert\Vert b \Vert\Vert c \Vert\), yielding
+        \[\frac{\Vert c-a \Vert}{\Vert c \Vert\Vert a \Vert} \leq \frac{\Vert b-a \Vert}{\Vert b \Vert\Vert a \Vert} + \frac{\Vert c-b \Vert}{\Vert c \Vert\Vert b \Vert}.\]
+        Finally! A nice looking form - one that a Pallas's Cat familiar with Linear Algebra may recognize. We can now push each term into a single norm for
+        \[\Big\Vert\frac{c}{\Vert c \Vert^2}-\frac{a}{\Vert a \Vert^2}\Big\Vert \leq \Big\Vert\frac{b}{\Vert b \Vert^2}-\frac{a}{\Vert a \Vert^2}\Big\Vert + \Big\Vert\frac{c}{\Vert c \Vert^2}-\frac{b}{\Vert b \Vert^2}\Big\Vert.\]
+        Which holds immediately by Triangle Inequality. That was a lot of work... Luckily, by spotting the Triangle Inequality early, we could confidently "follow our nose."
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Putnam and Beyond - Problem 118]</b></orange> <a name="PaB118"></a>
+        Let \(V_1,V_2,\ldots, V_m\) and \(W_1,W_2,\ldots, W_m\) be isometries of \(\mathbb{R}^n\) with \(m,n\) positive integers. 
+        Assume that for all \(x\) with \(\Vert x\Vert\leq 1, \Vert V_i x - W_i x\Vert\leq 1, i=1,2,\ldots, m.\) Prove that
+        \[\Big\Vert(\prod_{i=1}^m V_i)x - (\prod_{i=1}^m W_i)x\Big\Vert\leq m,\]
+        for all \(x\) with \(\Vert x\Vert\leq 1.\)
+        <br><br>
+        <i>Proof. </i>
+        By assumption, we have the claim for \(m=1.\) Proceeding by induction, our target becomes to bound 
+        \[\Big\Vert(\prod_{i=1}^m V_i)x - (\prod_{i=1}^m W_i)x\Big\Vert\leq m.\]
+        We begin by pulling out \(V_m\) and \(W_m\) in an attempt to coax out an inductive step, yielding
+        \[\Big\Vert V_m(\prod_{i=1}^{m-1} V_i)x - W_m(\prod_{i=1}^{m-1} W_i)x\Big\Vert.\]
+        Already we may intuit that the Triangle Inequality will aid us from this form, but the difference of terms is problematic. 
+        Applying the Reverse Triangle Inequality will only give a lower bound, while the Triangle Inequality can only be applied to a sum of terms.<br>
+        Our savior comes in the surprisingly common factorization trick \(ab-cd=a(b-d)+d(a-c)\), which massages our equation into
+        \[\Big\Vert(\prod_{i=1}^{m-1} V_i)(V_m-W_m)x + W_m(\prod_{i=1}^{m-1} V_i-\prod_{i=1}^{m-1} W_i)x\Big\Vert.\]
+        Now this norm is ripe for the Triangle Inequality, which we use to bound it above by
+        \[\Big\Vert(\prod_{i=1}^{m-1} V_i)(V_m-W_m)x\Big\Vert + \Big\Vert W_m(\prod_{i=1}^{m-1} V_i-\prod_{i=1}^{m-1} W_i)x\Big\Vert.\]
+        \(W_m\) is an isometry by assumption, and it can be shown easily through induction that the product of isometries is again an isometry, implying \(\prod_{i=1}^{m-1} V_i\) is an isometry.
+        Thus, as isometries preserve norms, we can again reduce our equation to become
+        \[\Big\Vert(V_m-W_m)x\Big\Vert + \Big\Vert(\prod_{i=1}^{m-1} V_i-\prod_{i=1}^{m-1} W_i)x\Big\Vert.\]
+        where by our inductive hypothesis are bounded by \(1\) and \(m-1\) respectively, for a total bound of \(m.\)
+        \(\blacksquare\)
+        </div>
+        <br>
+        <hr>
+        <h2 id="Rearrangement">The Rearrangement Inequality</h2>
+        <div class="Problem">
+        <orange><b>[The Rearrangement Inequality]</b></orange> <a name="RearrangementProblem"></a>
+        Show that for each pair of ordered real sequences
+        \[a_1 \leq \ldots \leq a_n \text{ and }b_1 \leq \ldots \leq b_n\]
+        and every permutation \(\sigma:[n]\to[n]\), we have the inequality
+        \[\sum_{k=1}^n a_kb_{\sigma(k)}\leq\sum_{k=1}^n a_kb_k \]
+        <br>
+        <i>Proof. </i>
+        The upper bound is the case where \(\sigma\) is the identity permutation, where equality trivially holds. Thus, assume that \(\sigma\) is not the identity permutation. 
+        Let \(s\) be the smallest element not sent to itself, and let \(r\) be the element that was sent to \(s\). 
+        It follows naturally that \(s\lt r\) and \(\sigma(r)\lt \sigma(s)\). <br>
+        We formally define the permutation \(\tau\) that switches the values of \(\sigma(r)\) and \(\sigma(s)\) as 
+        \[\tau(k)=\begin{cases}
+        \sigma(r)&\text{if k=s}\\
+        \sigma(s)&\text{if k=r}\\
+        \sigma(k)&\text{else}\\
+        \end{cases}.\]
+        Now, observe that 
+        \begin{align*}
+        \sum_{k=1}^n a_kb_{\tau(k)}-\sum_{k=1}^n a_kb_{\sigma(k)}&=a_sb_{\tau(s)}+a_rb_{\tau(r)}-a_sb_{\sigma(s)}-a_rb_{\sigma(r)}\\
+        &=a_sb_{\sigma(r)}+a_rb_{\sigma(s)}-a_sb_{\sigma(s)}-a_rb_{\sigma(r)}\\
+        &=(a_r-a_s)(b_{\sigma(s)}-b_{\sigma(r)})\\
+        &\geq 0&&\text{by \(s\lt r\) and \(\sigma(r)\lt \sigma(s)\).}
+        \end{align*}
+        Hence, swapping the smallest element \(s\) not sent to itself and the element \(r\) that was sent to \(s\) increases our sum. <br>
+        Notice that because this swap reduces how many elements were not sent to themselves, and the amount of elements permuted is finite, applying this "process" will terminate when our permutation is the identity - the maximal sum and upper bound.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[The Rearrangement Inequality, Lower Bound]</b></orange> <a name="RearrangementLB"></a>
+        Show that under the same conditions as before, we have the following lower bound for the rearrangement inequality
+        \[\sum_{k=1}^n a_kb_{n-k+1}\leq\sum_{k=1}^n a_kb_{\sigma(k)}\]
+        <br>
+        <i>Proof. </i>
+        The lower bound follows immediately from the upper. Consider the sequence \(-b_n\leq\ldots\leq -b_1\). Applying the upper bound gives
+        \[\sum_{k=1}^n -a_kb_{\sigma(k)}\leq\sum_{k=1}^n -a_kb_{n-k+1}.\]
+        From which we simply divide out the negative for our lower bound:
+        \[\sum_{k=1}^n a_kb_{n-k+1}\leq \sum_{k=1}^n a_kb_{\sigma(k)}.\quad \blacksquare\]
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Chebyshev's Sum Inequality]</b></orange> <a name="ChebyshevSum"></a>
+        Show that for each pair of ordered real sequences
+        \[a_1 \leq \ldots \leq a_n \text{ and } b_1 \leq \ldots \leq b_n,\]
+        we have the inequality
+        \[\Big(\sum_{k=1}^n a_k\Big)\Big(\sum_{k=1}^n b_k\Big)\leq n\Big(\sum_{k=1}^n a_kb_k\Big).\]
+        <br>
+        <i>Proof. </i>
+        By the Rearrangement Inequality, we have that
+        \begin{align*}
+        a_1b_1+\ldots+a_nb_n&\leq \sum_{k=1}^n a_kb_k\\
+        a_1b_2+\ldots+a_{n-1}b_n+a_nb_1&\leq \sum_{k=1}^n a_kb_k\\
+        &\vdots\\
+        a_1b_n+a_2b_1+\ldots+a_nb_{n-1}&\leq \sum_{k=1}^n a_kb_k
+        \end{align*}
+        Summing all these up yields our desired inequality directly. \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[The Nonlinear Rearrangement Inequality]</b></orange> <a name="NLRearrangement"></a>
+        Let \(f_1,\ldots,f_n\) be functions from \(I\subseteq\mathbb{R}\to \mathbb{R}\) such that \(f_{k+1}(x)-f_k(x)\) is nondecreasing for all \(1 \leq k\leq n\), 
+        and let \(b_1 \leq \ldots \leq b_n\) be an ordered sequence of elements of \(I\).<br> 
+        Show that for each permutation \(\sigma:[n]\to[n]\), we have the inequality
+        \[\sum_{k=1}^n f_k(b_{n-k+1})\leq\sum_{k=1}^n f_k(b_{\sigma(k)})\leq\sum_{k=1}^n f_k(b_k) \]
+        <br>
+        <i>Proof. </i>
+        Recall our earlier argument for the original Rearrangement Inequality, particularly the re-permutation \(\tau\).
+        Observe that, analogously to earlier, we have
+        \begin{align*}
+        \sum_{k=1}^n f_k(b_{\tau(k)})-\sum_{k=1}^n f_k(b_{\sigma(k)})&=f_s(b_{\tau(s)})+f_r(b_{\tau(r)})-f_s(b_{\sigma(s)})-f_r(b_{\sigma(r)})\\
+        &=f_s(b_{\sigma(r)})+f_r(b_{\sigma(s)})-f_s(b_{\sigma(s)})-f_r(b_{\sigma(r)})\\
+        &=(f_r(b_{\sigma(s)})-f_s(b_{\sigma(s)}))-(f_r(b_{\sigma(r)})-f_s(b_{\sigma(r)}))\\
+        &\geq 0&&\text{by \(b_{\sigma(r)}\lt b_{\sigma(s)}\) and \(f_r(x)-f_s(x)\) nondecreasing.}
+        \end{align*}
+        Thus, the same argument works without modification again, where we repeatedly re-permute with \(\tau\) to monotonically increase our sum until we reach the identity permutation.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[A Product Bound Corollary]</b></orange> <a name="ProductCorollary"></a>
+        Show that for each pair of ordered real sequences
+        \[a_1 \leq \ldots \leq a_n \text{ and }b_1 \leq \ldots \leq b_n\]
+        and every permutation \(\sigma:[n]\to[n]\), we have the inequality
+        \[\prod_{k=1}^n (a_k+b_k)\leq \prod_{k=1}^n (a_k+b_{\sigma(k)})\leq\prod_{k=1}^n (a_k+b_{n-k+1}) \]
+        <br>
+        <i>Proof. </i>
+        The similarity to the Rearrangement Inequality is uncanny, but it is unclear at first how we can transform a sum into a product. 
+        However, equipped with the Nonlinear Rearrangement Inequality, a prime candidate for approach is to consider the family of log functions due to their sum-to-product ability.<br>
+        Comparing the forms of the Nonlinear Rearrangement Inequality and our target inequality, it is natural to consider the functions \(f_k(x)=-\log(a_k+x)\). 
+        This makes intuitive sense, as \(\log(a_k+x)\) has the desired terms as inputs, while the coefficient \(-1\) allows us to swap the bounds of the Rearrangement Inequality, as we see in our target.
+        Indeed, plugging these functions into the Nonlinear Rearrangement Inequality does yield our claim, after clearing the \(-1\) coefficient to swap the bounds and raising everything as a power of \(e\) to remove the log. <br>
+        Thus, all that is left is to verify that our functions meet the precondition that \(f_{k+1}(x)-f_k(x)\) is nondecreasing for all \(1\leq k\leq n\).
+        Plugging in our function and applying the sum-to-product property of log, we find that
+        \[f_{k+1}(x)-f_k(x)=\log\Big(\frac{a_k+x}{a_{k+1}+x}\Big).\]
+        We already know that log is nondecreasing, so we only need verify that its input \(\frac{a_k+x}{a_{k+1}+x}\) is as well. 
+        This is done easily by checking its derivative, which we compute to be
+        \[\frac{a_{k+1}-a_k}{(a_{k+1}+x)^2}.\]
+        Of course, we know that \(a_{k+1}\geq a_k\) by assumption, so this derivative is nonnegative - implying that the input is nondecreasing.
+        \(\blacksquare\)
+        </div>
+        <br>
+        <hr>
+
+        <h2 id="Ordering">Inequalities with Ordering</h2>
+        The Rearrangement Inequality is both applicable and potent, and definitely deserved it's own section. 
+        However, it is but one small taste of the power that ordered sequences bring to the world of Inequalities. 
+        We begin to explore this below, but before proceeding we must cover a few things, the first of which being the definition of Majorization.
+        <br><br>
+        <div class="Definition">
+        <bluepurp><b>[Majorization]</b></bluepurp><a name="Majorization"></a>
+        For nonincreasing sequences \(\{a_k\}_{k=1}^n\) and \(\{b_k\}_{k=1}^n\), we say that \(\{a_k\}_{k=1}^n\) majorizes \(\{b_k\}_{k=1}^n\) iff
+        \[\sum_{k=1}^j b_k\leq \sum_{k=1}^j a_k\]
+        for all \(j\leq n\), with equality iff \(j=n\).
+        </div>
+        <br>
+        With this definition, we are ready to prove Karamata's Inequality.<br>
+        "Karamata's Inequality" generally refers to it's weaker form, which states that if \(\{a_k\}_{k=1}^n\) majorizes \(\{b_k\}_{k=1}^n\) and \(f\) is convex, then we have
+        \[\sum_{k=1}^n f(b_k)\leq \sum_{k=1}^n f(a_k).\]
+        However, in this problem we will jump straight to his weighted inequality, a more general case.
+        <br><br>
+        <div class="Problem">
+        <orange><b>[Karamata's (Weighted) Inequality]</b></orange> <a name="Karamata"></a>
+        Let \(\{a_k\}_{k=1}^n\) and \(\{b_k\}_{k=1}^n\) be nonincreasing sequences and let \(\{\lambda_k\}_{k=1}^n\) be a non-negative sequence. If
+        \[\sum_{k=1}^j \lambda_k b_k\leq \sum_{k=1}^j \lambda_k a_k\]
+        for all \(j\leq n\), with equality iff \(j=n\), then for convex functions \(f\) we have the inequality
+        \[\sum_{k=1}^n \lambda_k f(b_k)\leq \sum_{k=1}^n \lambda_k f(a_k).\]
+        Note that this is <u>not</u> the definition of \(\{\lambda_k a_k\}_{k=1}^n\) majorizes \(\{\lambda_k b_k\}_{k=1}^n\), as \(\{\lambda_k\}_{k=1}^n\) need not be sorted in nonincreasing order.<br>
+        Additionally, observe that taking \(\{\lambda_k\}_{k=1}^n=1\) retrives the weaker form of Karmata's Inequality.
+        <br><br>
+        <i>Proof. </i>
+        <red>Not written up yet</red>
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Reproving Jensen's Inequality]</b></orange> <a name="JensenAgain"></a>
+        Using Karamata's Weighted Inequality, find another proof of Jensen's Inequality.
+        <br><br>
+        <i>Proof. </i>
+        Jensen's Inequality gives us a sequence \(\{a_k\}_{k=1}^n\) to work with, 
+        and it is not too hard to work backwards to figure out what to define \(\{b_k\}_{k=1}^n\) as. 
+        When we do so, we find that we define the weights in Jensen's Inequality with the weights in Karamata's Inequality by 
+        \[w_k=\sum_{k=1}^n\frac{\lambda_k}{\sum_{k=1}^n\lambda_k},\]
+        and let our sequence \(\{b_k\}_{k=1}^n\) be defined as
+        \[\{b_k\}_{k=1}^n = \sum_{k=1}^n w_k a_k.\]
+        Applying Karamata's Inequality on these sequences yields
+        \[\sum_{k=1}^n \lambda_k f\Big(\sum_{k=1}^n w_k a_k\Big)\leq \sum_{k=1}^n \lambda_k f(a_k),\]
+        where we can divide both sides by \(\sum_{k=1}^n \lambda_k\) for
+        \[f\Big(\sum_{k=1}^n w_k a_k\Big)\leq \sum_{k=1}^n w_k f(a_k),\]
+        which is exactly Jensen's Inequality. Hence, all that is left to do is to check the preconditions of Karamata's Inequality.<br>
+        As non-negative weights and convexity of \(f\) are preconditions of Jensen's, we only need verify that 
+        \[\sum_{k=1}^j \lambda_k \Big(\sum_{k=1}^n w_k a_k\Big)\leq \sum_{k=1}^j \lambda_k a_k\]
+        for all \(j\leq n\), with equality iff \(j=n\).
+        Dividing both sides by \(\sum_{k=1}^n \lambda_k\) gives the inequality
+        \[\sum_{k=1}^j w_k \Big(\sum_{k=1}^n w_k a_k\Big)\leq \sum_{k=1}^j w_k a_k.\]
+        From here, it may be hard to immediately see why this is true. Recall that \(\sum_{k=1}^j w_k\leq 1\), so we only need consider
+        \[\sum_{k=1}^n w_k a_k\leq \sum_{k=1}^j w_k a_k.\]
+        We can view both sides as a weighted mean, the left being for all \(a_k\), and the right being for \(a_k, 1\leq k\leq j\). 
+        Because \(\{a_k\}_{k=1}^n\) is sorted in nonincreasing order, this inequality holds and moreover, we have equality iff \(j=n\).
+        \(\blacksquare\)
+        </div>
+        <br>
+        <div class="Problem">
+        <orange><b>[Chebyshev's Order Inequality]</b></orange> <a name="ChebyshevOrder"></a>
+        Let \(f,g\) both be nondecreasing functions from \(\mathbb{R}\to \mathbb{R}\), and suppose \(p_k\geq 0, k=1,\ldots,n\) satisfy \(\sum_{k=1}^n p_k=1\).
+        Show that for any nondecreasing sequence \(x_1\leq \ldots \leq x_n\) we have the inequality
+        \[\Big(\sum_{k=1}^n f(x_k)p_k\Big)\Big(\sum_{k=1}^n g(x_k)p_k\Big)\leq \sum_{k=1}^n f(x_k)g(x_k)p_k\]
+        <br>
+        <i>Proof. </i>
+        First, define the discrete random variable \(X\) taking values on the set \(\{x_1,\ldots,x_n\}\) such that \(P(X=x_k)=p_k\). 
+        Then, our target inequality becomes \[E[f(X)]E[g(X)]\leq E[f(X)g(X)].\]
+        Here we can perform a clever trick. Let \(Y\) be a random variable independent and identically distributed to \(X\). 
+        By \(f,g\) being monotonically increasing, we know that \(0\leq (f(X)-f(Y))(g(X)-g(Y))\). Expanding this quadratic and taking the expectation yields
+        \[0\leq E[f(X)g(X)]-E[f(X)g(Y)]-E[f(Y)g(X)]+E[f(Y)g(Y)].\]
+        But recall that the expectation factors for independent random variables, and that the expectations of two identically distributed random variables are equal.
+        This implies \(E[f(X)g(Y)]=E[f(X)]E[g(Y)]=E[f(X)]E[g(X)],\) with analogous applications for each term.<br>
+        Applying this drastically simplifies our inequality to
+        \[0\leq 2E[f(X)g(X)]-2E[f(X)]E[g(X)],\]
+        which after minor rearrangement and simplification yields our desired identity
+        \[E[f(X)]E[g(X)]\leq E[f(X)g(X)].\quad \blacksquare\]
+        </div>
+        <br> 
+        <hr>
+
+        <h2 id="Holder">Holder's Inequality</h2>
+        <br><br>
+        <div class="Problem">
+        <orange><b>[test]</b></orange> <a name="test"></a>
+        <br><br>
+        <i>Proof. </i>
+        <red>Not written up yet</red>
+        \(\blacksquare\)
+        </div>
+        <br>
+    </body>
+    </div>
+</html>
