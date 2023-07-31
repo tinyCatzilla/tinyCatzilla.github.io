@@ -6,116 +6,136 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="images/favicon_io/site.webmanifest">
-        <link href="style.css" rel="stylesheet" >
-        <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
-        <style>
-        body {
-            font-family: 'Nunito', serif;
-        }
-        </style>
+
+        <link href="./css/style.css" rel="stylesheet" >
+        <link href="./css/stars.css" rel="stylesheet" >
+        <style id="starStyles"></style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+
         <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
-        <script>
-            function refreshTime() {
-                const timeDisplay = document.getElementById("time");
-                let options = {
-                    timeZone: "America/New_York",
-                    hour: "numeric",
-                    minute: "numeric",
-                    weekday: "long",
-                }
-                formatter = new Intl.DateTimeFormat([], options);
-
-                const parts = formatter.formatToParts(datetime);
-                const partValues = parts.map(p => p.value);
-                let formattedString = ` It is ${partValues[2]}${partValues[3]}${partValues[4]} ${partValues[6]} on a ${partValues[0]} in my timezone.`
-                timeDisplay.textContent = formattedString;
-            }
-            setInterval(refreshTime, 1000);
-            window.onload = refreshTime;
-
-            // copyText script
-            function discordCopy() {
-                navigator.clipboard.writeText("@catzilla_");
-                // change css for copyAlert to display
-                var copyAlert = document.getElementsByClassName("copyAlert")[0];
-                copyAlert.style.display = "block";
-                // change css for copyAlert to hide after 2 seconds
-                setTimeout(function(){ copyAlert.style.display = "none"; }, 2000);
-            }
-        </script>
-        <script>
-            var datetime = new Date();
-            document.getElementById("time").textContent = datetime;
-        </script>
+        <script src="./js/time.js"></script>
+        <script src="./js/copytext.js"></script>
     </head>
-    <div id="wrap">
     <body>
-        <div class="navbar">
-          <a class="active" href="index.html"><i class="fa-solid fa-house"></i>home</a>
-          <a href="projects.html"><i class="fa-solid fa-computer"></i>projects</a>
-          <a href="math.html"><i class="fa-solid fa-square-root-variable"></i>math</a>
-          <a href="cooking.html"><i class="fa-solid fa-utensils"></i>cooking</a>
-          <a href="music.html"><i class="fa-solid fa-music"></i>music</a>
-          <a href="photos.html"><i class="fa-solid fa-image"></i>photos</a>
-          <a href="gaming.html"><i class="fa-solid fa-gamepad"></i>gaming</a>
-          <a href="indexOLD.html"><i class="fa-solid fa-ruler"></i>plan</a>
-          <a href="sanctuary.html"><i class="fa-solid fa-cat"></i>sanctuary</a>
+        <div class="starField">
+            <div id='stars' class="stars"></div>
+            <div id='stars2' class="stars"></div>
+            <div id='stars3' class="stars"></div>
         </div>
-        <div class="copyAlert">
-            <strong>Text copied!</strong>
-        </div>
-        <h1>
-            <div class="title">
-                <div class="main_title">
-                    <pink>catzilla!</pink>
-                </div>
-                <div class="subtitle">
-                    "mathematician" posting half-finished content for their fans :)
+        <script src="./js/stars.js"></script>
+
+
+        <div class="mainArea">
+            <div class="top">
+                <div class="logo">
+                    <img src="images/catzilla.png" alt="catzilla!">
                 </div>
             </div>
-        </h1>
-        <p>
-            <a href="math.html">inadequate math guides</a>,
-            <a href="cooking.html">student cooking</a>,
-            and a love for <a href="sanctuary.html">kitties!!!</a>
-        </p>
-        <ul class="fa-ul">
-            <li class="biolist"><i class="fa-solid fa-user"></i> 19 years old</p>
-            <li class="biolist"><i class="fa-solid fa-graduation-cap"></i> 2nd year pursuing a Mathematics & Its Applications Specialist (Probability/Statistics)</p>
-            <li class="biolist"><i class="fa-solid fa-location-dot"></i> Toronto, Canada</p>
-            <li class="biolist"><i class="fa-solid fa-clock"></i> <span id="time"> </span></p>
-        </ul> 
-        <h2>
-            <pink>Hotlinks:</pink>
-        </h2>
-        <ul>
-            <li class="projectlist"> <a href="Inequalities.html">Inequalities</a></li>
-            <li class="projectlist"> <a href="panang.html">Panang Curry</a></li>
-        </ul> 
-
-        <h2>
-            <pink>Socials:</pink>
-        </h2>
-        <p>
-            <a id="button2" href="#" onclick="discordCopy()">
-                <i class="fa-brands fa-discord fa-2xl logo"></i>
-                <span class = "caption">@catzilla_</span>
-            </a>
-            <a id="button2" href="https://steamcommunity.com/id/catzillaaa/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-steam fa-2xl logo"></i>
-                <span class = "caption">catzilla!</span>
-            </a>
-            <a id="button2" href="https://open.spotify.com/user/thekary" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-spotify fa-2xl logo"></i>
-                <span class = "caption">catzilla!</span>
-            </a>
-            <a id="button2" href="https://www.last.fm/user/Theta014" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-lastfm fa-2xl logo"></i>
-                <span class = "caption">Theta014</span>
-            </a>
-        </p>
+            
+            <div class="bottom">
+                <div class="left">
+                    <div class="content container">
+                        <div class="content-title">Welcome to catzilla.me!</div>
+                        <p> 
+                            <img id="meGif" src="images/me.gif" alt="me"> 
+                            This is my little website and blog.
+                            <br><br>
+                            I'm a "mathematician", & I program too maybe.
+                        </p>
+                    </div>
+                    <div class="content container">
+                        <div class="content-title">About me</div>
+                        <div class="content-text">
+                            <ul>
+                                <li>My main programming languages are Python and R, but I dabble in others as well.</li>
+                                <li>I have an unabashed love for Pallas' Cats. Aren't they just the cutest?</li>
+                                <li>3rd Year MathSpec student</li>
+                                <li>Toronto, Canada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content container">
+                        <div class="content-title">About me</div>
+                        <div class="content-text">
+                            <ul>
+                                <li>My main programming languages are Python and R, but I dabble in others as well.</li>
+                                <li>I have an unabashed love for Pallas' Cats. Aren't they just the cutest?</li>
+                                <li>3rd Year MathSpec student</li>
+                                <li>Toronto, Canada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content container">
+                        <div class="content-title">About me</div>
+                        <div class="content-text">
+                            <ul>
+                                <li>My main programming languages are Python and R, but I dabble in others as well.</li>
+                                <li>I have an unabashed love for Pallas' Cats. Aren't they just the cutest?</li>
+                                <li>3rd Year MathSpec student</li>
+                                <li>Toronto, Canada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content container">
+                        <div class="content-title">About me</div>
+                        <div class="content-text">
+                            <ul>
+                                <li>My main programming languages are Python and R, but I dabble in others as well.</li>
+                                <li>I have an unabashed love for Pallas' Cats. Aren't they just the cutest?</li>
+                                <li>3rd Year MathSpec student</li>
+                                <li>Toronto, Canada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content container">
+                        <div class="content-title">Hotlinks :3</div>
+                        <div class="content-text">
+                            <a href="#">Inequalities</a><br>
+                            <a href="#">Panang Curry</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="right">
+                    <div class="side container">
+                        <div class="content-title">Navigation</div>
+                        <a class="active" href="index.html"><i class="fa-solid fa-house"></i> home</a><br>
+                        <a href="projects.html"><i class="fa-solid fa-computer"></i> projects</a><br>
+                        <a href="math.html"><i class="fa-solid fa-square-root-variable"></i> math</a><br>
+                        <a href="gaming.html"><i class="fa-solid fa-gamepad"></i> gaming</a><br>
+                        <a href="cooking.html"><i class="fa-solid fa-utensils"></i> cooking</a><br>
+                        <!-- <a href="music.html"><i class="fa-solid fa-music"></i> music</a><br> -->
+                        <!-- <a href="photos.html"><i class="fa-solid fa-image"></i> photos</a><br> -->
+                        <!-- <a href="plan.html"><i class="fa-solid fa-ruler"></i> plan</a><br> -->
+                        <a href="sanctuary.html"><i class="fa-solid fa-cat"></i> sanctuary</a><br>
+                    </div>
+                    <div class="side container">
+                        <div class="content-title">Contact</div>
+                        <a id="button" href="#" onclick="discordCopy()">
+                            <i class="fa-brands fa-discord fa-2xl logo"></i>
+                            <span class = "caption">@catzilla_</span>
+                        </a>
+                        <a id="button" href="https://steamcommunity.com/id/catzillaaa/" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-steam fa-2xl logo"></i>
+                            <span class = "caption">catzilla!</span>
+                        </a>
+                        <a id="button" href="https://open.spotify.com/user/thekary" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-spotify fa-2xl logo"></i>
+                            <span class = "caption">catzilla!</span>
+                        </a>
+                        <a id="button" href="https://www.last.fm/user/Theta014" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-lastfm fa-2xl logo"></i>
+                            <span class = "caption">Theta014</span>
+                        </a>
+                        <div class="copyAlert">
+                            <strong>Text copied!</strong>
+                        </div>
+                    </div>
+                    <div class="side container">
+                        <i class="fa-solid fa-clock"></i>
+                        <div class="content-title"><span id="time"></span></div>
+                    </div>
+                </div>
+            </div>
     </body>
-    </div>
-
 </html>

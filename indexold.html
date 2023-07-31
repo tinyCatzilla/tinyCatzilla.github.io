@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>catzilla! home</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="images/favicon_io/site.webmanifest">
+        <link href="./css/style.css" rel="stylesheet" >
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+        <style>
+        body {
+            font-family: 'Nunito', serif;
+        }
+        </style>
+        <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+        <script> 
+          $(function(){
+            $("#navbar").load("navbar.html"); 
+          });
+        </script> 
+        <script>
+            function refreshTime() {
+                const timeDisplay = document.getElementById("time");
+                let options = {
+                    timeZone: "America/New_York",
+                    hour: "numeric",
+                    minute: "numeric",
+                    weekday: "long",
+                }
+                formatter = new Intl.DateTimeFormat([], options);
+
+                const parts = formatter.formatToParts(datetime);
+                const partValues = parts.map(p => p.value);
+                let formattedString = ` It is ${partValues[2]}${partValues[3]}${partValues[4]} ${partValues[6]} on a ${partValues[0]} in my timezone.`
+                timeDisplay.textContent = formattedString;
+            }
+            setInterval(refreshTime, 1000);
+            window.onload = refreshTime;
+
+            // copyText script
+            function discordCopy() {
+                navigator.clipboard.writeText("@catzilla_");
+                // change css for copyAlert to display
+                var copyAlert = document.getElementsByClassName("copyAlert")[0];
+                copyAlert.style.display = "block";
+                // change css for copyAlert to hide after 2 seconds
+                setTimeout(function(){ copyAlert.style.display = "none"; }, 2000);
+            }
+        </script>
+        <script>
+            var datetime = new Date();
+            document.getElementById("time").textContent = datetime;
+        </script>
+    </head>
+    <div id="wrap">
+    <body>
+        <div id="navbar"></div>
+        <div class="copyAlert">
+            <strong>Text copied!</strong>
+        </div>
+        <h1>
+            <div class="title">
+                <div class="main_title">
+                    <pink>catzilla!</pink>
+                </div>
+                <div class="subtitle">
+                    "mathematician" posting half-finished content for their fans :)
+                </div>
+            </div>
+        </h1>
+        <p>
+            some <a href="math.html">math</a>,
+            some <a href="cooking.html">gaming</a>,
+            and some <a href="sanctuary.html">cats</a>
+        </p>
+        <ul class="fa-ul">
+            <li class="biolist"><i class="fa-solid fa-user"></i> 19 years old</p>
+            <li class="biolist"><i class="fa-solid fa-graduation-cap"></i> 2nd year pursuing a Mathematics & Its Applications Specialist (Probability/Statistics)</p>
+            <li class="biolist"><i class="fa-solid fa-location-dot"></i> Toronto, Canada</p>
+            <li class="biolist"><i class="fa-solid fa-clock"></i> <span id="time"> </span></p>
+        </ul> 
+        <h2>
+            <pink>Hotlinks:</pink>
+        </h2>
+        <ul>
+            <li class="projectlist"> <a href="Inequalities.html">Inequalities</a></li>
+            <li class="projectlist"> <a href="panang.html">Panang Curry</a></li>
+        </ul> 
+
+        <h2>
+            <pink>Socials:</pink>
+        </h2>
+        <p>
+            <a id="button2" href="#" onclick="discordCopy()">
+                <i class="fa-brands fa-discord fa-2xl logo"></i>
+                <span class = "caption">@catzilla_</span>
+            </a>
+            <a id="button2" href="https://steamcommunity.com/id/catzillaaa/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-steam fa-2xl logo"></i>
+                <span class = "caption">catzilla!</span>
+            </a>
+            <a id="button2" href="https://open.spotify.com/user/thekary" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-spotify fa-2xl logo"></i>
+                <span class = "caption">catzilla!</span>
+            </a>
+            <a id="button2" href="https://www.last.fm/user/Theta014" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-lastfm fa-2xl logo"></i>
+                <span class = "caption">Theta014</span>
+            </a>
+        </p>
+    </body>
+    </div>
+
+</html>

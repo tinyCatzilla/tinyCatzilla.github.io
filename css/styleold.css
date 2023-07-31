@@ -64,7 +64,7 @@ body{
 .mathlist {
     list-style: none;
     padding: 20px 70px;
-    background-image: url("./images/pogcat.png");
+    background-image: url("../images/pogcat.png");
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 60px;
@@ -312,6 +312,7 @@ h2 + p {
 }
 
 .projectImageArea {
+  border-radius: 6px 6px 0 0; /* order is top-left, top-right, bottom-right, bottom-left */
   width: 100%;
   height: 200px;
   overflow: hidden;

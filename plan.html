@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="images/favicon_io/site.webmanifest">
-        <link href="style.css" rel="stylesheet" >
+        <link href="../css/style.css" rel="stylesheet" >
         <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
         <style>
@@ -15,20 +15,16 @@
         }
         </style>
         <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+        <script> 
+          $(function(){
+            $("#navbar").load("navbar.html"); 
+          });
+        </script>
     </head>
     <div id="wrap">
     <body>
-        <div class="navbar">
-          <a class="active" href="index.html"><i class="fa-solid fa-house"></i>home</a>
-          <a href="projects.html"><i class="fa-solid fa-computer"></i>projects</a>
-          <a href="math.html"><i class="fa-solid fa-square-root-variable"></i>math</a>
-          <a href="cooking.html"><i class="fa-solid fa-utensils"></i>cooking</a>
-          <a href="music.html"><i class="fa-solid fa-music"></i>music</a>
-          <a href="photos.html"><i class="fa-solid fa-image"></i>photos</a>
-          <a href="gaming.html"><i class="fa-solid fa-gamepad"></i>gaming</a>
-          <a href="indexOLD.html"><i class="fa-solid fa-ruler"></i>plan</a>
-          <a href="sanctuary.html"><i class="fa-solid fa-cat"></i>sanctuary</a>
-        </div>
+        <div id="navbar"></div>
         <h1>Pallas's Cats Fanpage</h1>
         <p>
             <orange> I love Pallas's cats. </orange>It is the best cat ever. I think that they are the best cat ever. <orange>I like them so much.</orange> 

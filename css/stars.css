@@ -1,0 +1,58 @@
+.starField {
+    background: radial-gradient(ellipse at top, #1a2734 0%, #090b0f 100%);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .stars{
+    z-index: 2;
+  }
+  
+  #title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: "lato", sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    letter-spacing: 10px;
+    margin-top: -60px;
+    padding-left: 10px;
+}
+
+#title span {
+    background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+.stars.animated, .stars.animated:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    background: transparent;
+}
+
+.stars.animated {
+    animation: animStar infinite;
+}
+
+
+
+
+
+   

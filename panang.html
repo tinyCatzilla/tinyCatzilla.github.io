@@ -6,56 +6,60 @@
         <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="images/favicon_io/site.webmanifest">
-        <link href="style.css" rel="stylesheet" >
-        <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
-        <style>
-        body {
-            font-family: 'Nunito', serif;
-        }
-        </style>
+
+        <link href="./css/style.css" rel="stylesheet" >
+        <link href="./css/stars.css" rel="stylesheet" >
+        <style id="starStyles"></style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+
         <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
     </head>
-    <div id="wrap">
     <body>
-        <div class="navbar">
-          <a class="active" href="index.html"><i class="fa-solid fa-house"></i>home</a>
-          <a href="projects.html"><i class="fa-solid fa-computer"></i>projects</a>
-          <a href="math.html"><i class="fa-solid fa-square-root-variable"></i>math</a>
-          <a href="cooking.html"><i class="fa-solid fa-utensils"></i>cooking</a>
-          <a href="music.html"><i class="fa-solid fa-music"></i>music</a>
-          <a href="photos.html"><i class="fa-solid fa-image"></i>photos</a>
-          <a href="gaming.html"><i class="fa-solid fa-gamepad"></i>gaming</a>
-          <a href="indexOLD.html"><i class="fa-solid fa-ruler"></i>plan</a>
-          <a href="sanctuary.html"><i class="fa-solid fa-cat"></i>sanctuary</a>
+      <div class="starField">
+        <div id='stars' class="stars"></div>
+        <div id='stars2' class="stars"></div>
+        <div id='stars3' class="stars"></div>
+      </div>
+      <script src="./js/stars.js"></script>
+      <div class="mainArea">
+        <div class="top">
+          <div class="logo">
+              <img src="images/catzilla.png" alt="catzilla!">
+          </div>
         </div>
-        <h1><pink>Panang Curry</pink></h1>
-        <p>
-            <i class="fa-solid fa-clock"></i> 40 Minutes
-        </p>
-        <h2>
-            <pink>Ingredients:</pink>
-        </h2>
-        <ul>
-            <li>Rice</li>
-            <li>Panang curry paste</li>
-            <li>Coconut milk</li>
-            <li>Any whitefish</li>
-            <li>Vegetables (Bell Pepper, Cabbage, Carrots, Cauliflower, ...)</li>
-            <li>Kaffir lime leaves (Optional)</li>
-            <li>Lemongrass (Optional)</li>
-        </ul>
-        <h2>
-            <pink>Recipe:</pink>
-        </h2>
-        <p>
-            Make coconut rice (rice with coconut milk instead of water).
-            While that cooks, put a spoonful of Panang curry paste, a bit of oil, and a bunch of coconut milk in a pan. 
-            Let simmer until the coconut milk absorbs the flavor. If you have, add Kaffir lime leaves once you have a sauce. 
-            After the sauce is finished, cut up fish and lemongrass and add to pot for 5 minutes.  
-            Once finished, remove the curry from the pot, stir-fry your vegetables, and serve (rice + curry + veggies).
-        </p>
-    </body>
+        <div class="bottom">
+          <div class="center">
+            <div class="content container">
+                <h1><pink>Panang Curry</pink></h1>
+                <p>
+                    <i class="fa-solid fa-clock"></i> 40 Minutes
+                </p>
+                <h2>
+                    <pink>Ingredients:</pink>
+                </h2>
+                <ul>
+                    <li>Rice</li>
+                    <li>Panang curry paste</li>
+                    <li>Coconut milk</li>
+                    <li>Any whitefish</li>
+                    <li>Vegetables (Bell Pepper, Cabbage, Carrots, Cauliflower, ...)</li>
+                    <li>Kaffir lime leaves (Optional)</li>
+                    <li>Lemongrass (Optional)</li>
+                </ul>
+                <h2>
+                    <pink>Recipe:</pink>
+                </h2>
+                <p>
+                    Make coconut rice (rice with coconut milk instead of water).
+                    While that cooks, put a spoonful of Panang curry paste, a bit of oil, and a bunch of coconut milk in a pan. 
+                    Let simmer until the coconut milk absorbs the flavor. If you have, add Kaffir lime leaves once you have a sauce. 
+                    After the sauce is finished, cut up fish and lemongrass and add to pot for 5 minutes.  
+                    Once finished, remove the curry from the pot, stir-fry your vegetables, and serve (rice + curry + veggies).
+                </p>
+            </div>
+        </div>
+      </div>
     </div>
-
+  </body>
+</div>
 </html>
