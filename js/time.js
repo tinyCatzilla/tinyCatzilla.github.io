@@ -98,6 +98,7 @@ function main() {
     refreshTime();
     setInterval(refreshTime, 1000);
     setInterval(colonBlink, 500);
+    console.log("time")
 }
 
-window.onload = main;
+window.addEventListener("load", main);

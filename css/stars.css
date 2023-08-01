@@ -1,5 +1,5 @@
 .starField {
-    background: radial-gradient(ellipse at top, #1a2734 0%, #090b0f 100%);
+    background: radial-gradient(ellipse at top, #1a2734 0%, #00030a 100%); /* 090b0f 00050f 000000  */
     position: fixed;
     width: 100%;
     height: 100%;
@@ -51,8 +51,6 @@
     animation: animStar infinite;
 }
 
-
-
-
-
-   
+.nav a {
+    color: #fff;
+}
