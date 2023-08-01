@@ -121,7 +121,7 @@ a:hover {
     background: #090b0f8e; /* 090b0f8e */
     padding: 18px;
     /* width: 100%; */
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.212);
+    box-shadow: 0px 0px 10px rgba(173, 173, 173, 0.212);
 }
 
 .container img {
@@ -257,11 +257,6 @@ ul {
 }
 
 .Problem{
-    /* background-color: rgb(39, 42, 54);
-    padding: 20px;
-    border-radius: 20px;
-    margin: 5px */
-    /* border: 2px solid rgba(255, 255, 255, 0.425); */
     border: 2px solid #ffffff96;
     border-radius: 5px;
     margin: 10px 10px 10px 10px; /* top right bottom left */
@@ -272,11 +267,6 @@ ul {
 }
 
 .Definition{
-    /* background-color: rgb(39, 42, 54);
-    padding: 20px;
-    border-radius: 20px;
-    margin: 5px */
-    /* border: 2px solid rgba(255, 255, 255, 0.425); */
     border: 2px solid #ffffff96;
     border-radius: 5px;
     margin: 10px 10px 10px 10px; /* top right bottom left */
@@ -313,10 +303,10 @@ ul {
 }
 
 .sliderRight {
-    animation: scrollRtL 15s linear infinite;
+    animation: scrollRtL 20s linear infinite;
 }
 .sliderLeft {
-    animation: scrollLtR 15s linear infinite;
+    animation: scrollLtR 20s linear infinite;
 }
 
 @keyframes scrollLtR {
@@ -343,4 +333,45 @@ ul {
 .sideNote {
     color: #ffffff60;
     margin-left: 5px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#button2 {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    margin: 5px;
+    border: 1px dotted #d8b11700;
+    filter: drop-shadow(0px 0px 5px #d8b117a6);
+    -webkit-filter: drop-shadow(0px 0px 5px #d8b117a9);
+}
+#button2:hover {
+    text-decoration: none;
+    border: 1px dotted #d8b117;
+}
+
+.caption{ 
+    display: block;
+}
+
+.blankContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.kittyCat {
+    width: 50%;
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+    -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
 }

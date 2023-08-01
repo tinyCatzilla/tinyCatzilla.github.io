@@ -9,14 +9,35 @@
 }
 
 .clock{
-    color: #ff2828;
-    text-shadow: 0 0 10px #f50707;
     z-index: 4;
 }
 
-.clockBack, .clockColonBack {
+.clockbackRed {
     color: #ff4e4e18!important;
-    z-index: 3;
+    text-shadow: 0 0 0px #ff4e4e18!important;
+    
+}
+.redClock {
+    color: #ff2828;
+    text-shadow: 0 0 10px #f50707;
+}
+
+.blueClock {
+    color: #7fc5ff;
+    text-shadow: 0 0 10px #008cff;
+}
+.clockbackBlue {
+    color: #3ca7ff18!important;
+    text-shadow: 0 0 0px #3ca7ff18!important;
+}
+
+.greenClock {
+    color: #7fff85;
+    text-shadow: 0 0 10px rgb(0, 255, 42);
+}
+.clockbackGreen {
+    color: #3fff3f18!important;
+    text-shadow: 0 0 0px #3fff3f18!important;
 }
 
 .clock, .clockBack {
@@ -35,6 +56,10 @@
     grid-area: 1 / 1 / 2 / 2;
 }
 
+.clockBack {
+    z-index: 3;
+}
+
 .hour, .min {
     /* font-family: 'Segment7Standard', fallback, sans-serif; */
     margin: 0;
@@ -42,10 +67,6 @@
     transition: all 0.1s ease-out;
 }
 
-.clockColon {
-    color: #f50707;
-    text-shadow: 0 0 10px #f50707;
-}
 
 .clockColonBack, .clockColon {
     font-family: 'SevenSegment', fallback, sans-serif;
@@ -69,7 +90,29 @@
 .date {
     /* align-self: flex-start; */
     font-family: 'SevenSegment', fallback, sans-serif;
-    color: #ff2828;
-    text-shadow: 0 0 10px #f50707;
     margin-top: -15px;
+}
+
+.sleepy {
+    margin-top: -40px;
+    margin-right: -260px;
+    position: absolute;
+    display: none;
+}
+.sleepy span {
+    position: relative;
+    display: inline-block;
+}
+
+/* sleepy first child */
+.sleepy span:nth-child(1) {
+    transform: scale(1.5);
+}
+
+.sleepy span:nth-child(2) {
+    transform: scale(1.2) translate(2px, -11px);
+}
+
+.sleepy span:nth-child(3) {
+    transform: scale(1) translate(3px, -28px);
 }

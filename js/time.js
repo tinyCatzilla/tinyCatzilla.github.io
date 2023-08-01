@@ -37,6 +37,7 @@ function refreshTime() {
         weekday: "long",
         day: "numeric",
         month: "short",
+        // hour12: false,
     }
     let formatter = new Intl.DateTimeFormat([], options);
 
@@ -66,10 +67,26 @@ function refreshTime() {
         changeTime(partValues[4], month);
     }
 
-
-    // hour.textContent = hourNum;
-    // min.textContent = partValues[4];
-    // amPm.textContent = partValues[3];
+    if (partValues[10] == "am") { // make green if between 7am 12am
+        console.log(hourNum)
+        if (parseInt(hourNum) >= 7) { // if hour is >= 7
+            const redClocks = document.querySelectorAll(".redClock");
+            const numRedClocks = redClocks.length;
+            for (let i = 0; i < numRedClocks; i++) {
+                redClocks[i].classList.remove("redClock");
+                redClocks[i].classList.add("greenClock");
+            }
+            const redClockbacks = document.querySelectorAll(".clockbackRed");
+            const numRedClockbacks = redClockbacks.length;
+            for (let i = 0; i < numRedClockbacks; i++) {
+                redClockbacks[i].classList.remove("clockbackRed");
+                redClockbacks[i].classList.add("clockbackGreen");
+            }
+        } else {
+            const sleep = document.querySelector(".sleepy");
+            sleep.style.display = "block";
+        }
+    }
 }
 
 function colonBlink() {
@@ -94,11 +111,38 @@ function changeTime(change, element) {
     }, 500);
 }
 
+let zCount = 0;
+function blinkZs() {
+    const zs = document.querySelectorAll(".sleepy > *");
+
+    if (zs.length == 0) {
+        return;
+    }
+
+    for (let i = 0; i < zs.length; i++) {
+        // add clockRed to zs[zCount]
+        if (i != zCount) {
+            zs[i].classList.add("clockbackRed");
+        }
+        else {
+            zs[i].classList.remove("clockbackRed");
+        }
+    }
+    
+    if (zCount == 2){
+        zCount = 0;
+    }
+    else {
+        zCount++;
+    }
+
+}
+
 function main() {
     refreshTime();
     setInterval(refreshTime, 1000);
     setInterval(colonBlink, 500);
-    console.log("time")
+    setInterval(blinkZs, 1100)
 }
 
 window.addEventListener("load", main);
