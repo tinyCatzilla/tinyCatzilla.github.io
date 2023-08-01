@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Segment7Standard';
+    src: url('../fonts/Segment7Standard.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SevenSegment';
+    src: url('../fonts/SevenSegment.ttf') format('truetype');
+}
+
+.clock{
+    color: #ff2828;
+    text-shadow: 0 0 10px #f50707;
+    z-index: 4;
+}
+
+.clockBack, .clockColonBack {
+    color: #ff4e4e18!important;
+    z-index: 3;
+}
+
+.clock, .clockBack {
+    margin-top: -10px;
+    /* position: absolute; */
+    letter-spacing: 0rem;
+    font-family: 'Segment7Standard', fallback, sans-serif;
+    /* font-family: 'SevenSegment', fallback, sans-serif; */
+    font-size: 2.4rem;
+
+}
+.clockStack {
+    display: grid;
+}
+.clock, .clockBack {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.hour, .min {
+    /* font-family: 'Segment7Standard', fallback, sans-serif; */
+    margin: 0;
+    padding: 0;
+    transition: all 0.1s ease-out;
+}
+
+.clockColon {
+    color: #f50707;
+    text-shadow: 0 0 10px #f50707;
+}
+
+.clockColonBack, .clockColon {
+    font-family: 'SevenSegment', fallback, sans-serif;
+    font-size: 4rem;
+    margin: -20px;
+    transition: all 0.1s ease-out;
+}
+
+.amPm {
+    font-size: 1rem;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.sized {
+    padding-top: 0;
+}
+
+.date {
+    /* align-self: flex-start; */
+    font-family: 'SevenSegment', fallback, sans-serif;
+    color: #ff2828;
+    text-shadow: 0 0 10px #f50707;
+    margin-top: -15px;
+}
