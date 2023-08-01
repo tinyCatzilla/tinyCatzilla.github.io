@@ -1,28 +1,3 @@
-// function refreshTime() {
-//     const timeDisplay = document.getElementById("time");
-//     let options = {
-//         timeZone: "America/New_York",
-//         hour: "numeric",
-//         minute: "numeric",
-//         weekday: "long",
-//     }
-//     let formatter = new Intl.DateTimeFormat([], options);
-
-//     let datetime = new Date();
-//     const parts = formatter.formatToParts(datetime);
-//     const partValues = parts.map(p => p.value);
-//     let formattedString = ` It is ${partValues[2]}${partValues[3]}${partValues[4]} ${partValues[6]} on a ${partValues[0]} in my timezone.`
-//     timeDisplay.textContent = formattedString;
-// }
-
-// function main() {
-//     refreshTime();
-//     setInterval(refreshTime, 1000);
-// }
-
-// window.onload = main;
-
-
 function refreshTime() {
     const hour = document.querySelector(".hour");
     const min = document.querySelector(".min");
@@ -67,25 +42,24 @@ function refreshTime() {
         changeTime(partValues[4], month);
     }
 
-    if (partValues[10] == "am") { // make green if between 7am 12am
-        console.log(hourNum)
-        if (parseInt(hourNum) >= 7) { // if hour is >= 7
-            const redClocks = document.querySelectorAll(".redClock");
-            const numRedClocks = redClocks.length;
-            for (let i = 0; i < numRedClocks; i++) {
-                redClocks[i].classList.remove("redClock");
-                redClocks[i].classList.add("greenClock");
-            }
-            const redClockbacks = document.querySelectorAll(".clockbackRed");
-            const numRedClockbacks = redClockbacks.length;
-            for (let i = 0; i < numRedClockbacks; i++) {
-                redClockbacks[i].classList.remove("clockbackRed");
-                redClockbacks[i].classList.add("clockbackGreen");
-            }
-        } else {
-            const sleep = document.querySelector(".sleepy");
-            sleep.style.display = "block";
+    console.log(hourNum)
+    if (partValues[10] == "am" && parseInt(hourNum) >= 7 || partValues[10] == "pm") { // if hour is >= 7
+        const redClocks = document.querySelectorAll(".redClock");
+        const numRedClocks = redClocks.length;
+        for (let i = 0; i < numRedClocks; i++) {
+            redClocks[i].classList.remove("redClock");
+            redClocks[i].classList.add("greenClock");
         }
+        const redClockbacks = document.querySelectorAll(".clockbackRed");
+        const numRedClockbacks = redClockbacks.length;
+        for (let i = 0; i < numRedClockbacks; i++) {
+            redClockbacks[i].classList.remove("clockbackRed");
+            redClockbacks[i].classList.add("clockbackGreen");
+        }
+        // sleep.style.display = "none";
+    } else {
+        const sleep = document.querySelector(".sleepy");
+        sleep.style.display = "block";
     }
 }
 
