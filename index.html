@@ -20,6 +20,36 @@
         <script src="./js/kittyPet.js"></script>
 
         <noscript><meta http-equiv="Refresh" content="3;URL=https://js.ramiels.me"></noscript>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"> 
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/animation.js"></script>
+
+
+        <!-- <script type="module" src="./js/random-js.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+        <style>
+            :root {
+                --color: #e7e7e7;
+                --background: #000;
+                --size: 1.4;
+                --glow: 0.1;
+                --animation: terminal-blink;
+            }
+            .cmd-cursor {
+                --original-color: white;
+            }
+            .canvas {
+                height: 100;
+                min-height: 25px!important;
+            }
+        </style>
     </head>
     <body>
         <div class="starField">
@@ -63,14 +93,15 @@
                         </p>
                     </div>
 
-                    
-                    <div class="content container">
-                        <div class="content-title">Hotlinks :3</div>
-                        <ul>
-                            <li class="list"><a href="/Inequalities">Inequalities</a> - A collection of useful inequalities and their applications</li>
-                            <li class="list"><a href="/panang">Panang Curry</a> - A yummy thai curry you should eat I think</li>
-                        </ul>
-                    </div>
+                    <!-- <div class="content container noPadding"> -->
+                        <div class="contentBox" id="consoleArea">
+                            <span class="contentTitle">purrminal</span>
+                            <div class="console"></div>
+                        </div>
+                        <template id="greetings"></template>
+                        <script src="./js/console.js"></script>
+                        <script src="./js/draggable.js"></script>
+                    <!-- </div> -->
                     
                     <div class="content container">
                         <div class="content-title">Some things I like</div>
@@ -86,7 +117,7 @@
                             </div> -->
                         </div>
                     </div>
-
+                    
                     <div class="content container">
                         <div class="content-title">Hotlinks :3</div>
                         <ul>
@@ -94,6 +125,7 @@
                             <li class="list"><a href="/panang">Panang Curry</a> - A yummy thai curry you should eat I think</li>
                         </ul>
                     </div>
+                    
 
                 </div>
                 <div class="right">
@@ -132,30 +164,31 @@
                             <span class="day hidden">xx</span> <span class="dateNum hidden">xx</span> <span class="month hidden">xx</span>
                         </div>
                     </div>
-                    <div class="side container contact">
-                        <a style="margin-left: 3px;" id="button2" href="#" onclick="discordCopy()">
+                    <div class="side container contact centred">
+                        <a id="button2" href="#" onclick="discordCopy()">
                             <i class="fa-brands fa-discord fa-2xl logo"></i>
                             <span class = "caption" id="discordName">@catzilla_</span>
                         </a>
-                        <a style="margin-top: -15px; margin-left: 10px;" id="button2" href="https://steamcommunity.com/id/catzillaaa/" target="_blank" rel="noopener noreferrer">
+                        <a id="button2" href="https://steamcommunity.com/id/catzillaaa/" target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-steam fa-2xl logo"></i>
                             <span class = "caption">catzilla!</span>
                         </a>
-                        <a style="margin-top: 15px; margin-left: -3px;"id="button2" href="https://open.spotify.com/user/thekary" target="_blank" rel="noopener noreferrer">
+                        <a id="button2" href="https://open.spotify.com/user/thekary" target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-spotify fa-2xl logo"></i>
                             <span class = "caption">catzilla!</span>
                         </a>
-                        <a style="margin-left: 15px;" id="button2" href="https://www.last.fm/user/Theta014" target="_blank" rel="noopener noreferrer">
+                        <a id="button2" href="https://www.last.fm/user/Theta014" target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-lastfm fa-2xl logo"></i>
                             <span class = "caption">Theta014</span>
                         </a>
-                        <a style="margin-left: 45px;" id="button2" href="mailto:contact@catzilla.me">
+                        <a id="button2" href="mailto:contact@catzilla.me">
                             <i class="fa-solid fa-2xl fa-envelope logo"></i>
                             <span class = "caption">email</span>
                         </a>
                     </div>
+                    
                     <div class="blankContainer">
-                        <img src="./images/catSleep/catSleeping.gif" alt="cat sleeping" class="kittyCat">
+                        <img src="./images/catSleep/kittypout.png" alt="cat :3" class="kittyCat">
                     </div>
                 </div>
 

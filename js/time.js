@@ -41,9 +41,7 @@ function refreshTime() {
     if (partValues[4] != month.textContent) {
         changeTime(partValues[4], month);
     }
-
-    console.log(hourNum)
-    if (partValues[10] == "am" && parseInt(hourNum) >= 7 || partValues[10] == "pm") { // if hour is >= 7
+    if ((partValues[10].toLowerCase() == "am" && parseInt(hourNum) >= 7 && parseInt(hourNum) < 12) || partValues[10].toLowerCase() == "pm") { // if hour is >= 7
         const redClocks = document.querySelectorAll(".redClock");
         const numRedClocks = redClocks.length;
         for (let i = 0; i < numRedClocks; i++) {

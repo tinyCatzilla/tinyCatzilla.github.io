@@ -257,6 +257,11 @@ ul {
 }
 
 .Problem{
+    /* background-color: rgb(39, 42, 54);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 5px */
+    /* border: 2px solid rgba(255, 255, 255, 0.425); */
     border: 2px solid #ffffff96;
     border-radius: 5px;
     margin: 10px 10px 10px 10px; /* top right bottom left */
@@ -267,6 +272,11 @@ ul {
 }
 
 .Definition{
+    /* background-color: rgb(39, 42, 54);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 5px */
+    /* border: 2px solid rgba(255, 255, 255, 0.425); */
     border: 2px solid #ffffff96;
     border-radius: 5px;
     margin: 10px 10px 10px 10px; /* top right bottom left */
@@ -375,3 +385,88 @@ ul {
     filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
     -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
 }
+
+.contentTitle {
+    width:100%;
+    display:block;
+    overflow-y: hidden;
+    background-color: #fff;
+    color:black;
+    padding-left:5px;
+    padding-right:5px;
+    box-sizing:border-box;
+    font-size:small;
+    text-align: left;
+    font-size: 16px;
+}
+
+.contentBox {
+    /* background: black; */
+    background: #090b0f8e; /* 090b0f8e */
+
+    border: 2px solid #ffffff96;
+    border-radius: 5px;
+
+    border-style: solid;
+    border-width: 2px;
+    overflow-y: auto;
+    margin-bottom: 30px;
+    text-align: center;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 10px 10px 10px 10px;
+    /* width:90%; */
+}
+
+.console {
+    /* background:red; */
+    text-align: left;
+    height: 300px!important;
+    font-family: 'JetBrains Mono', monospace;
+    padding-top: 5px!important; 
+    /* font-size: 20px!important; */
+}
+
+#consoleArea {
+    left: 20%;
+    top: 35%;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.dragBox {
+    position:absolute;
+}
+
+.miniContentBox {
+    position:absolute;
+    /* background: black;
+    border-color: #fff; */
+    border: 2px solid #ffffff96;
+    border-radius: 5px;
+    background: #090b0f8e; /* 090b0f8e */
+
+    border-style: solid;
+    border-width: 2px;
+    text-align: left;
+    z-index: 20;
+    width: 500px;
+    top: 20%;
+    left: 10%;
+}
+
+.closeBtn {
+    background: none;
+    text-align: right;
+    float: right;
+    vertical-align: middle;
+}
+
+.contentImage {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }
