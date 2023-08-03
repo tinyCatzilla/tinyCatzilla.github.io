@@ -24,14 +24,19 @@ let directories = {
     '/videos': []
 };
 let files = {
-    '/documents': ['file1.txt', 'file2.txt'],
-    '/pictures': ['pic1.jpg', 'pic2.jpg'],
-    '/videos': ['video1.mp4', 'video2.mp4']
+    '/documents': ['stokes_quote.txt'],
+    '/pictures': ['winton.gif', 'sparkle.gif'],
+    '/videos': ['aa_ee_oo.yt', 'csm.yt']
 };
 let fileContents = {
-    '/documents/file1.txt': 'This is the content of file1.txt',
-    '/documents/file2.txt': 'This is the content of file2.txt',
-    // add other file contents here...
+    '/documents/stokes_quote.txt': "Stokes theorem shares three important attributes with many fully evolved major theorems: \n" +
+    "1. It is trivial. \n" +
+    "2. It is trivial because the terms appearing in it have been properly defined. \n" +
+    "3. It has significant consequences.",
+    '/pictures/winton.gif': './images/console/winton.gif',
+    '/pictures/sparkle.gif': './images/console/sparkle.gif',
+    '/videos/aa_ee_oo.yt': 'https://www.youtube-nocookie.com/embed/PMZxehxMvHU',
+    '/videos/csm.yt': 'https://www.youtube-nocookie.com/embed/GcIs_a3Epfg'
 };
 
 
@@ -47,14 +52,17 @@ var term = $('.console').terminal({
         "clear - clears the terminal \n" + 
         "ls - lists the contents of the current directory \n" +
         "cd <directory> - changes the current directory \n" +
+        "open <file> - opens a file\n" +
         "date - shows the current date \n" + 
         "time - shows the current time \n" + 
         "eval - evaluates a mathematical expression \n" +
         // "rnorm - generates a random value from a Normal distribution \n" +
         // "rpoisson - generates a random value from a Poisson distribution \n" +
-        "openOtter - shows an otter window\n" +
-        "openImage <image_url> - opens an image window\n" +
-        // "openText <text> - opens a text window\n" +
+        "otter - shows a random otter\n" +
+        "meow - shows a random meow\n" +
+        "weather <city> - shows the weather\n" +
+        "wiki <query> - searches wikipedia\n" +
+        // "ascii <query> - searches ascii art\n" +
         "about - shows information about purrminal\n"
         )
     },
@@ -65,19 +73,34 @@ var term = $('.console').terminal({
     },
     
     cd: function(dir) {
+        // Handle '..' for moving up a directory
         if (dir === '..') {
             currentDirectory = currentDirectory.substring(0, currentDirectory.lastIndexOf('/'));
             if (!currentDirectory) currentDirectory = '/';
         } else {
-            let newDirectory = currentDirectory === '/' ? currentDirectory + dir : currentDirectory + '/' + dir;
-            if (directories[newDirectory]) {
-                currentDirectory = newDirectory;
+            // If it's a full path, check if it's a valid directory or file
+            if(dir.startsWith('/')) {
+                if(directories[dir]) {
+                    currentDirectory = dir;
+                } else if(files[dir.substring(0, dir.lastIndexOf('/'))].includes(dir.split('/').pop())) {
+                    currentDirectory = dir.substring(0, dir.lastIndexOf('/'));
+                } else {
+                    this.echo("Invalid directory or file");
+                }
             } else {
-                this.echo("Invalid directory");
+                // If it's a relative path, combine with current directory and check again
+                let newDirectory = currentDirectory === '/' ? currentDirectory + dir : currentDirectory + '/' + dir;
+                if(directories[newDirectory]) {
+                    currentDirectory = newDirectory;
+                } else if(files[newDirectory.substring(0, newDirectory.lastIndexOf('/'))].includes(newDirectory.split('/').pop())) {
+                    currentDirectory = newDirectory.substring(0, newDirectory.lastIndexOf('/'));
+                } else {
+                    this.echo("Invalid directory or file");
+                }
             }
         }
         this.echo("Current directory: " + currentDirectory);
-    },
+    },    
 
     open: function(file) {
         let filePath = currentDirectory === '/' ? currentDirectory + file : currentDirectory + '/' + file;
@@ -91,12 +114,14 @@ var term = $('.console').terminal({
                 case 'jpg':
                 case 'gif':
                 case 'png':
-                    this.openImage(fileContents[filePath]);
+                    openImage(fileContents[filePath]);
                     break;
                 case 'mp4':
-                case 'gif':
                 case 'apng':
-                    this.openMovingContent(fileContents[filePath]);
+                    openMovingContent(fileContents[filePath]);
+                    break;
+                case 'yt':
+                    openYoutube(fileContents[filePath]);
                     break;
                 default:
                     this.echo('Cannot open this file type');
@@ -120,33 +145,10 @@ var term = $('.console').terminal({
         this.echo(new Date().toTimeString());
     },
 
-    openOtter: function() {
+    otter: function() {
         this.echo("Opening otter window...");
         openWindow(false, chooseOtterPic(), 'image');
         this.echo("Opened otter window :)");
-    },
-
-    openImage: function(image) {
-        // check if input is a valid image url
-        if (image.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-            this.echo("Opening image window...");
-            openWindow(false, image, 'image');
-            this.echo("Opened image window :)");
-        }
-        else {
-            this.echo("Invalid image url. The URL must end with .jpeg, .jpg, .gif or .png");
-        }
-    },
-
-    openMovingContent: function(content) {
-        if (content.match(/\.(mp4|gif|apng)$/) != null) {
-            this.echo("Opening content window...");
-            openWindow(false, content, 'video');
-            this.echo("Opened content window :)");
-        }
-        else {
-            this.echo("Invalid content url. The URL must end with .mp4, .gif or .apng");
-        }
     },
 
     eval: function(expression) {
@@ -175,14 +177,50 @@ var term = $('.console').terminal({
     //     }
     // },
 
+    meow: function() {
+        this.echo(chooseMeow());
+    },
 
-    
+    weather: function(city) {
+        const apiKey = 'a487ee9ff8c68ba8ae99266ac166d58d';
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.main) {
+                    this.echo(`Current weather in ${city}:
+                    Temperature: ${data.main.temp}°C
+                    Humidity: ${data.main.humidity}%
+                    Condition: ${data.weather[0].main}`);
+                } else {
+                    this.echo("Invalid city or error fetching weather data");
+                }
+            })
+            .catch(error => this.echo('Error fetching weather'));
+    },
 
-    // openText: function(text) {
-    //     this.echo("Opening text window...");
-    //     openWindow(text, false);
-    //     this.echo("Opened text window :)");
+    wiki: function(query) {
+        fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${query}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.type === 'standard') {
+                    this.echo(`Title: ${data.title}\nExtract: ${data.extract}`);
+                } else {
+                    this.echo("No page found or error fetching data");
+                }
+            })
+            .catch(error => this.echo('Error fetching wiki data'));
+    },
+
+    // ascii: function(text) {
+    //     figlet(text, (err, asciiArt) => {
+    //         if (err) {
+    //             this.echo('Error generating ASCII art');
+    //         } else {
+    //             this.echo(asciiArt);
+    //         }
+    //     });
     // },
+
 
     about: function() {
         this.echo(`Hi :3 I'm purrminal, and I can run some basic commands. I'm still in development, so I can't do much yet.`);
@@ -211,6 +249,42 @@ class BarAnimation extends $.terminal.Animation {
 }
 term.echo(new BarAnimation(15)); // 50 frames per second
 
+function chooseMeow() {
+    meows = ['meow', 'mrow', 'mrrp', 'mew', 'mrpt', 'mrrr', 'miao', 'miau', 'rawr', 'mrawr', 'mrrrow', 'nya']
+    return meows[Math.floor(Math.random() * meows.length)];
+}
+
+function openImage(image) {
+    // check if input is a valid image url
+    if (image.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+        openWindow(false, image, 'image');
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function openMovingContent(content) {
+    if (content.match(/\.(mp4|apng)$/) != null) {
+        openWindow(false, content, 'video');
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function openYoutube(url) {
+    if (url.match(/^(http(s)?:\/\/)?((w){3}.)?youtube(-nocookie)?.com\/embed\/.+/) != null) {
+        openWindow(false, url, 'youtube');
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 // open window function
 function openWindow(text, content, contentType) {
     // new div
@@ -224,6 +298,7 @@ function openWindow(text, content, contentType) {
     newSpanTitle.classList.add("contentTitle");
     newSpanTitle.classList.add("draggable");
     newSpanTitle.innerHTML = "Window " + newDiv.id + `<button class="closeBtn" onclick="this.parentElement.parentElement.style.display='none'">x</button>`;
+    // newSpanTitle.innerHTML = content + `<button class="closeBtn" onclick="this.parentElement.parentElement.style.display='none'">x</button>`;
     newDiv.appendChild(newSpanTitle);
 
     if (content) {
@@ -235,6 +310,15 @@ function openWindow(text, content, contentType) {
             case 'video':
                 newContentElement = document.createElement("video");
                 newContentElement.setAttribute('controls', '');
+                break;
+            case 'youtube':
+                newDiv.classList.add("miniYoutubeBox");
+                newContentElement = document.createElement("iframe");
+                newContentElement.setAttribute('width', "480");
+                newContentElement.setAttribute('height', "270");
+                newContentElement.setAttribute('frameborder', "0");
+                newContentElement.setAttribute('allowFullScreen', '');
+                newContentElement.src = content;
                 break;
             default:
                 console.log('Unknown content type');

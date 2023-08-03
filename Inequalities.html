@@ -429,7 +429,7 @@
                         Recall that any inner product space \((V,\langle\cdot\rangle)\) induces a norm given by
                         \[\Vert v \Vert= \sqrt{\langle v,v \rangle},\]
                         and that every normed space \((V,\Vert\cdot\Vert)\) induces a metric given by
-                        \[d(x,y)=\Vert y-x, y-x \Vert.\]
+                        \[d(x,y)=\Vert y-x \Vert.\]
                         Thus, as every inner product space induces a normed space, and every normed space induces a metric space, the Triangle Inequality must hold in these spaces as well. <br>
                         But this raises some questions. Is the Triangle Inequality also taken as an axiom for normed and inner product spaces, as it is in metric spaces? 
                         What does the triangle inequality look like in these spaces?
@@ -444,20 +444,17 @@
                         As a lemma, observe that by the definition of \(d(x,y)\), \(d(x+t,y+t)=d(x,y)\). 
                         Thus, to show the triangle inequality, it suffices to show
                         \[d(0,y-x)\leq d(0,z-x) + d(z-x,y-x).\]
-                        Your natural instinct may drive you to relabel left to write as \(d(0,a)\leq d(0,b) + d(a,b)\), but stopping to consider our end goal gives intuition to why this is a mistake. 
-                        By that, I mean that we are looking towards Cauchy-Schwarz, which has the product of two variables on the left side. 
+                        Your natural instinct may drive you to relabel this as \(d(0,a)\leq d(0,b) + d(a,b)\), but stopping to consider our end goal gives intuition to why this is a mistake. 
+                        By that, I mean that we are looking towards Cauchy-Schwarz, which has the product of two variables in the lower bound. 
                         So instead of labelling \(x-y\) as a single vector, we should make some effort to label it as a function of two, while letting the pre-existing sum take care of the right side. <br>
                         Still, I think the correct relabelling is difficult to spot, as it only becomes nice after simplification. We take \(a=z-x\) and \(b=y-z\) for
                         \[d(0,a+b)\leq d(0,a) + d(a,a+b)=d(0,a) + d(0,b),\]
                         where equality follows from the definition of \(d(x,y)\). 
                         From here, we square the inequality with respect to \(d(x,y)\)'s definition, yielding
                         \[\sum_{k=1}^n (a_k+b_k)^2\leq \sum_{k=1}^n a_k^2 + 2\sqrt{\sum_{k=1}^n a_k^2}\sqrt{\sum_{k=1}^n b_k^2} + \sum_{k=1}^n b_k^2.\]
-                        Where we can finally see notions of Cauchy-Schwarz. Indeed, after some simplification we have
+                        We can finally see notions of Cauchy-Schwarz. Indeed, after some simplification we have
                         \[\sum_{k=1}^n a_kb_k\leq \sqrt{\sum_{k=1}^n a_k^2}\sqrt{\sum_{k=1}^n b_k^2},\]
-                        which is equivalent to Cauchy-Schwarz.<br>
-                        Wow! \(\blacksquare\)
-                        <br>
-                        <img src="./images/sanctuary/wow1.png" alt="Pallas's cat">
+                        which is equivalent to Cauchy-Schwarz. \(\blacksquare\)<br>
                         </div>
                         <br>
                         That problem lends some intuition towards a connection between the Triangle Inequality and Cauchy-Schwarz.
@@ -502,7 +499,7 @@
                         From here, the triangle equality is already beginning to show; if only we could get rid of these pesky single-variable norms. 
                         Following this intuition, we divide everything by \(\Vert a \Vert\Vert b \Vert\Vert c \Vert\), yielding
                         \[\frac{\Vert c-a \Vert}{\Vert c \Vert\Vert a \Vert} \leq \frac{\Vert b-a \Vert}{\Vert b \Vert\Vert a \Vert} + \frac{\Vert c-b \Vert}{\Vert c \Vert\Vert b \Vert}.\]
-                        Finally! A nice looking form - one that a Pallas's Cat familiar with Linear Algebra may recognize. We can now push each term into a single norm for
+                        Finally! A nice looking form - one that a Pallas's Cat familiar with Linear Algebra might have encountered. We can push each term into a single norm for
                         \[\Big\Vert\frac{c}{\Vert c \Vert^2}-\frac{a}{\Vert a \Vert^2}\Big\Vert \leq \Big\Vert\frac{b}{\Vert b \Vert^2}-\frac{a}{\Vert a \Vert^2}\Big\Vert + \Big\Vert\frac{c}{\Vert c \Vert^2}-\frac{b}{\Vert b \Vert^2}\Big\Vert.\]
                         Which holds immediately by Triangle Inequality. That was a lot of work... Luckily, by spotting the Triangle Inequality early, we could confidently "follow our nose."
                         \(\blacksquare\)
