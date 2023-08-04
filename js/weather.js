@@ -21,12 +21,13 @@ function loadWeather(weather){
         overcast = true;
     }
     if (precipitation > 0){
-        if (conditionText.includes("rain")){
-            drawRain = true;
-        }
-        else if (conditionText.includes("snow")){
-            drawSnow = true;
-        }
+        // if (conditionText.includes("rain")){
+        //     drawRain = true;
+        // }
+        // else if (conditionText.includes("snow")){
+        //     drawSnow = true;
+        // }
+        drawRain = true;
     }
     if (is_day){
         drawDay = true;
@@ -62,6 +63,13 @@ function loadWeather(weather){
         else if (!drawDay){
             background = "url(./images/cityWidget/night.png)";
         }
+    }
+
+    if (drawRain){
+        foreground = "url(./images/cityWidget/rain.webp)";
+    }
+    else if (drawSnow){
+        foreground = "url(./images/cityWidget/snow.png)";
     }
 
     return [background, foreground];
@@ -109,6 +117,14 @@ function drawWeather(weatherImgs){
     weatherDiv.style.backgroundSize = "cover";
     weatherDiv.style.backgroundRepeat = "no-repeat";
     weatherDiv.style.backgroundPosition = "center";
+
+    if (foreground != undefined){
+        // new div for foreground
+        const foregroundDiv = document.createElement("div");
+        foregroundDiv.classList.add("foregroundDiv");
+        foregroundDiv.style.backgroundImage = foreground;
+        weatherDiv.appendChild(foregroundDiv);
+    }
 }
 
 
