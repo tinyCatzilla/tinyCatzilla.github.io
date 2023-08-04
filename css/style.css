@@ -478,3 +478,13 @@ ul {
     object-fit: cover;
     position: relative;
 }
+
+.glowText {
+    text-shadow: 0px 0px 10px #ffffff4f;
+}
+
+.weatherDiv {
+    min-height: 120px;
+    /* height: 200px;
+    width: 200px; */
+}

@@ -209,23 +209,24 @@ var term = $('.console').terminal({
     meow: function() {
         this.echo(chooseMeow());
     },
-
+    
     weather: function(city) {
-        const apiKey = 'a487ee9ff8c68ba8ae99266ac166d58d';
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+        const apiKey = '3cad06964c8c4dd680f51545230408';
+    
+        fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
             .then(response => response.json())
             .then(data => {
-                if (data.main) {
+                if (data) {
                     this.echo(`Current weather in ${city}: \n`+
-                    `Temperature: ${data.main.temp}°C \n` +
-                    `Humidity: ${data.main.humidity}% \n` +
-                    `Condition: ${data.weather[0].main}`);
+                    `Temperature: ${data.current.temp_c}°C \n` +
+                    `Humidity: ${data.current.humidity}% \n` +
+                    `Condition: ${data.current.condition.text}`);
                 } else {
                     this.echo("Invalid city or error fetching weather data");
                 }
             })
-            .catch(error => this.echo('Error fetching weather'));
-    },
+            .catch(error => console.log('Error fetching weather:', error));
+    },    
 
     wiki: function(query) {
         fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${query}`)
