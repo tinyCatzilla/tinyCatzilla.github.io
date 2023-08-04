@@ -33,9 +33,18 @@ function loadWeather(weather){
         drawDay = true;
     }
 
-    const hour = document.querySelector(".hour");
-    let hourNum = parseInt(hour.textContent);
-    if ((hourNum >= 6 && hourNum < 8) || (hourNum >= 18 && hourNum < 20)){
+    let options = {
+        timeZone: "America/New_York",
+        hour: "numeric",
+    }
+    let formatter = new Intl.DateTimeFormat([], options);
+    let datetime = new Date();
+    const parts = formatter.formatToParts(datetime);
+    const partValues = parts.map(p => p.value);
+
+    let hourNum = partValues[0];
+    console.log(hourNum);
+    if ((hourNum >= 6 && hourNum <= 8)){
         evening = true;
     }
 
