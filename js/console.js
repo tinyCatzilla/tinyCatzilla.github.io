@@ -12,31 +12,50 @@
 // });
 
 
-let options = ["Hiya!", "o/", "Mrrp", "Meow's it going?", "nya~", "Meowdy!", ":3"]
-let welcomeText = options[Math.floor(Math.random() * options.length)]
+let options = ["Hiya!", "o/", "Mrrp", "Meow's it going?", "nya~", "Meowdy!", ":3", "hii"]
+// let welcomeText = options[Math.floor(Math.random() * options.length)]
 let windows = 1;
 
 let currentDirectory = '/';
 let directories = {
-    '/': ['documents', 'pictures', 'videos'],
+    '/': ['documents','music', 'pictures', 'videos'],
     '/documents': [],
+    '/music': [],
     '/pictures': [],
     '/videos': []
 };
 let files = {
-    '/documents': ['stokes_quote.txt'],
+    '/documents': ['stokes_quote.txt', "private_do_not_open.txt"],
+    '/music': ['BRAINWORMS.mp3', 'eleanor_rigby.mp3', 'FATALITY.mp3', 'free_money.mp3', 'gallery_piece.mp3', 'i_wanna_know.mp3', 'imovie180.mp3', 
+    'makeup_for_boys.mp3', 'mind_fuzz.mp3', 'snail_man.mp3', 'song1.mp3'],
     '/pictures': ['winton.gif', 'sparkle.gif'],
-    '/videos': ['aa_ee_oo.yt', 'csm.yt']
+    '/videos': ['aa_ee_oo.yt', 'csm.yt', 'spamton.yt']
 };
 let fileContents = {
     '/documents/stokes_quote.txt': "Stokes theorem shares three important attributes with many fully evolved major theorems: \n" +
     "1. It is trivial. \n" +
     "2. It is trivial because the terms appearing in it have been properly defined. \n" +
     "3. It has significant consequences.",
+    '/documents/private_do_not_open.txt': "meowmeow im a kitty :3 murr mrrp",
+
+    '/music/BRAINWORMS.mp3': './images/console/BRAINWORMS.mp3',
+    '/music/eleanor_rigby.mp3': './images/console/eleanor_rigby.mp3',
+    '/music/FATALITY.mp3': './images/console/FATALITY.mp3',
+    '/music/free_money.mp3': './images/console/free_money.mp3',
+    '/music/gallery_piece.mp3': './images/console/gallery_piece.mp3',
+    '/music/i_wanna_know.mp3': './images/console/i_wanna_know.mp3',
+    '/music/imovie180.mp3': './images/console/imovie180.mp3',
+    '/music/makeup_for_boys.mp3': './images/console/makeup_for_boys.mp3',
+    '/music/mind_fuzz.mp3': './images/console/mind_fuzz.mp3',
+    '/music/snail_man.mp3': './images/console/snail_man.mp3',
+    '/music/song1.mp3': './images/console/song1.mp3',
+
     '/pictures/winton.gif': './images/console/winton.gif',
     '/pictures/sparkle.gif': './images/console/sparkle.gif',
-    '/videos/aa_ee_oo.yt': 'https://www.youtube-nocookie.com/embed/PMZxehxMvHU',
-    '/videos/csm.yt': 'https://www.youtube-nocookie.com/embed/GcIs_a3Epfg'
+
+    '/videos/aa_ee_oo.yt': 'https://www.youtube-nocookie.com/embed/PMZxehxMvHU?autoplay=1',
+    '/videos/csm.yt': 'https://www.youtube-nocookie.com/embed/GcIs_a3Epfg?autoplay=1',
+    '/videos/spamton.yt': 'https://www.youtube-nocookie.com/embed/d8RkcUiCxuE?autoplay=1'
 };
 
 
@@ -47,9 +66,9 @@ var term = $('.console').terminal({
     },
 
     help: function() {
-        this.echo("Available commands: \n\n" + 
+        this.echo("Available commands: \n" + 
         "help - shows this message \n" + 
-        "clear - clears the terminal \n" + 
+        "cls - clears the terminal \n" + 
         "ls - lists the contents of the current directory \n" +
         "cd <directory> - changes the current directory \n" +
         "open <file> - opens a file\n" +
@@ -63,7 +82,7 @@ var term = $('.console').terminal({
         "weather <city> - shows the weather\n" +
         "wiki <query> - searches wikipedia\n" +
         // "ascii <query> - searches ascii art\n" +
-        "about - shows information about purrminal\n"
+        "about - shows information about purrminal"
         )
     },
 
@@ -92,14 +111,21 @@ var term = $('.console').terminal({
                 let newDirectory = currentDirectory === '/' ? currentDirectory + dir : currentDirectory + '/' + dir;
                 if(directories[newDirectory]) {
                     currentDirectory = newDirectory;
-                } else if(files[newDirectory.substring(0, newDirectory.lastIndexOf('/'))].includes(newDirectory.split('/').pop())) {
-                    currentDirectory = newDirectory.substring(0, newDirectory.lastIndexOf('/'));
                 } else {
-                    this.echo("Invalid directory or file");
+                    let possibleDirectory = newDirectory.substring(0, newDirectory.lastIndexOf('/'));
+                    let possibleFile = newDirectory.split('/').pop();
+                    if(files[possibleDirectory] && files[possibleDirectory].includes(possibleFile)) {
+                        currentDirectory = possibleDirectory;
+                    } else {
+                        this.echo("Invalid directory or file");
+                    }
                 }
             }
         }
-        this.echo("Current directory: " + currentDirectory);
+        let dirContents = directories[currentDirectory].concat(files[currentDirectory] || []);
+        this.echo(currentDirectory);
+        this.echo(dirContents.join('\n'));
+
     },    
 
     open: function(file) {
@@ -115,6 +141,9 @@ var term = $('.console').terminal({
                 case 'gif':
                 case 'png':
                     openImage(fileContents[filePath]);
+                    break;
+                case 'mp3':
+                    openAudio(fileContents[filePath]);
                     break;
                 case 'mp4':
                 case 'apng':
@@ -133,7 +162,7 @@ var term = $('.console').terminal({
     },
     
 
-    clear: function() {
+    cls: function() {
         this.clear();
     },
 
@@ -187,10 +216,10 @@ var term = $('.console').terminal({
             .then(response => response.json())
             .then(data => {
                 if (data.main) {
-                    this.echo(`Current weather in ${city}:
-                    Temperature: ${data.main.temp}°C
-                    Humidity: ${data.main.humidity}%
-                    Condition: ${data.weather[0].main}`);
+                    this.echo(`Current weather in ${city}: \n`+
+                    `Temperature: ${data.main.temp}°C \n` +
+                    `Humidity: ${data.main.humidity}% \n` +
+                    `Condition: ${data.weather[0].main}`);
                 } else {
                     this.echo("Invalid city or error fetching weather data");
                 }
@@ -203,7 +232,8 @@ var term = $('.console').terminal({
             .then(response => response.json())
             .then(data => {
                 if(data.type === 'standard') {
-                    this.echo(`Title: ${data.title}\nExtract: ${data.extract}`);
+                    this.echo(`Title: ${data.title} \n` +
+                    `Extract: ${data.extract}`);
                 } else {
                     this.echo("No page found or error fetching data");
                 }
@@ -226,27 +256,28 @@ var term = $('.console').terminal({
         this.echo(`Hi :3 I'm purrminal, and I can run some basic commands. I'm still in development, so I can't do much yet.`);
     }
 }, {
-    greetings: greetings.innerHTML
+    // greetings: greetings.innerHTML
+    greetings: options[Math.floor(Math.random() * options.length)] + ' Type help to get started!'
 });
 
 get_help = function() {
     return "Welcome to the terminal. Type 'help' to see a list of commands.";
 }
 
-class BarAnimation extends $.terminal.Animation {
-    constructor(...args) {
-        super(...args);
-        this._i = 0;
-    }
-    render(term) {
-        if (this._i > term.cols()) {
-            return false;
-        } else {
-            return [welcomeText.substr(0, this._i++)];
-        }
-    }
+// class BarAnimation extends $.terminal.Animation {
+//     constructor(...args) {
+//         super(...args);
+//         this._i = 0;
+//     }
+//     render(term) {
+//         if (this._i > term.cols()) {
+//             return false;
+//         } else {
+//             return [welcomeText.substr(0, this._i++)];
+//         }
+//     }
 
-}
+// }
 term.echo(new BarAnimation(15)); // 50 frames per second
 
 function chooseMeow() {
@@ -264,6 +295,35 @@ function openImage(image) {
         return false;
     }
 }
+
+function openAudio(audio) {
+    let absoluteURL = new URL(audio, window.location.href).href;
+
+    if (absoluteURL.match(/\.(mp3|wav)$/i) != null) {
+        jsmediatags.read(absoluteURL, {
+            onSuccess: function(tag) {
+                let image = tag.tags.picture;
+                if (image) {
+                    let base64String = "";
+                    for (let i = 0; i < image.data.length; i++) {
+                        base64String += String.fromCharCode(image.data[i]);
+                    }
+                    let base64 = "data:" + image.format + ";base64," + window.btoa(base64String);
+                    openWindow(false, absoluteURL, 'audio', base64);
+                } else {
+                    openWindow(false, absoluteURL, 'audio');
+                }
+            },
+            onError: function(error) {
+                console.log(':(', error.type, error.info);
+            }
+        });
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 function openMovingContent(content) {
     if (content.match(/\.(mp4|apng)$/) != null) {
@@ -286,7 +346,7 @@ function openYoutube(url) {
 }
 
 // open window function
-function openWindow(text, content, contentType) {
+function openWindow(text, content, contentType, albumArt = null) {
     // new div
     let newDiv = document.createElement("div");
     newDiv.classList.add("miniContentBox");
@@ -301,6 +361,13 @@ function openWindow(text, content, contentType) {
     // newSpanTitle.innerHTML = content + `<button class="closeBtn" onclick="this.parentElement.parentElement.style.display='none'">x</button>`;
     newDiv.appendChild(newSpanTitle);
 
+    // set the X and Y position of newDiv to be random and within the screen
+    const body = document.querySelector("body");
+    let randomX = Math.floor(Math.random() * (body.scrollWidth - 600));
+    let randomY = Math.floor(Math.random() * (body.scrollHeight - 600));
+    newDiv.style.left = randomX + "px";
+    newDiv.style.top = randomY + "px";
+
     if (content) {
         let newContentElement;
         switch (contentType) {
@@ -310,6 +377,20 @@ function openWindow(text, content, contentType) {
             case 'video':
                 newContentElement = document.createElement("video");
                 newContentElement.setAttribute('controls', '');
+                newContentElement.setAttribute('autoplay', '');
+                newContentElement.volume = 0.5;
+                break;
+            case 'audio':
+                newContentElement = document.createElement('audio');
+                newContentElement.setAttribute('controls', '');
+                newContentElement.setAttribute('autoplay', '');
+                newContentElement.volume = 0.5;
+                if (albumArt) {
+                    let img = document.createElement('img');
+                    img.classList.add("contentImage");
+                    img.src = albumArt;
+                    newDiv.appendChild(img);
+                }
                 break;
             case 'youtube':
                 newDiv.classList.add("miniYoutubeBox");

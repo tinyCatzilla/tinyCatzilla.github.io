@@ -16,8 +16,8 @@ function addDragListeners() {
           const parentRect = dragParent.getBoundingClientRect();
           const newX = e.clientX - dragX;
           const newY = e.clientY - dragY;
-          const maxX = window.innerWidth - parentRect.width;
-          const maxY = window.innerHeight - parentRect.height;
+          const maxX = document.body.scrollWidth - parentRect.width;
+          const maxY = document.body.scrollHeight - parentRect.height;
           const clampedX = Math.max(0, Math.min(newX, maxX));
           const clampedY = Math.max(0, Math.min(newY, maxY));
           dragParent.style.left = clampedX + "px";
