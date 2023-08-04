@@ -52,7 +52,7 @@ function loadWeather(weather){
             background = "url(./images/cityWidget/nightCloudy.png)";
         }
         else {
-            background = "url(./images/cityWidget/dayCloudy.png)";
+            background = "url(./images/cityWidget/cloudyBlue.png)";
         }
     }
     else {
