@@ -166,8 +166,6 @@ async function getWeather(){
         precipitation = data.current.precip_mm;
         cloud = data.current.cloud;
         is_day = data.current.is_day;
-        // console.log(data_forecast);
-        // console.log("WOW", data_forecast.forecast.forecastday[0].astro)
         forecastday = data_forecast.forecast.forecastday[0]
         sunriseTime = forecastday.astro.sunrise;
         sunsetTime = forecastday.astro.sunset;
@@ -202,6 +200,23 @@ function drawWeather(weatherImgs){
     }
 }
 
+function drawText(weather){
+    const weatherDiv = document.querySelector(".weatherDiv");
+
+    const tempRounded = Math.round(weather[0]);
+
+    const temperatureDiv = document.createElement("div");
+    temperatureDiv.classList.add("temperatureDiv");
+
+    const temperatureNum = document.createElement("span");
+    temperatureNum.id = "temperatureNum";
+    temperatureNum.innerHTML = tempRounded + "<sup id=\"celc\">&deg;C</sup>";
+    
+    // temperatureDiv.appendChild(weatherLocation);
+    temperatureDiv.appendChild(temperatureNum);
+    weatherDiv.appendChild(temperatureDiv);
+}
+
 
 function main(){
     (async () => {
@@ -209,6 +224,7 @@ function main(){
         console.log(weather);
         const weatherImgs = loadWeather(weather);
         drawWeather(weatherImgs);
+        drawText(weather);
     })();
 }
 
