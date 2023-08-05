@@ -158,7 +158,6 @@ async function getWeather(){
         const data = await response.json();
         const data_forecast = await response_forecast.json()
         
-        console.log(data);
         temp = data.current.temp_c;
         conditionText = data.current.condition.text;
         humidty = data.current.humidity;

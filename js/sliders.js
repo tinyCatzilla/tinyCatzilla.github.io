@@ -26,9 +26,6 @@ async function main() {
     const numSliders = sliders.length;
     let maxImageCount = 17; // maximum number of images expected
 
-
-
-
     let promises = Array.from({length: maxImageCount}, (_, i) => {
         let url = `./images/banners/banner (${i+1}).png`;
         return checkImage(url)

@@ -37,6 +37,7 @@ let fileContents = {
     "2. It is trivial because the terms appearing in it have been properly defined. \n" +
     "3. It has significant consequences.",
     '/documents/private_do_not_open.txt': "meowmeow im a kitty :3 murr mrrp",
+    // '/documents/resume.pdf': './images/console/resume.pdf',
 
     '/music/BRAINWORMS.mp3': './images/console/BRAINWORMS.mp3',
     '/music/eleanor_rigby.mp3': './images/console/eleanor_rigby.mp3',
@@ -151,6 +152,9 @@ var term = $('.console').terminal({
                     break;
                 case 'yt':
                     openYoutube(fileContents[filePath]);
+                    break;
+                case 'pdf':
+                    openPDF(fileContents[filePath]);
                     break;
                 default:
                     this.echo('Cannot open this file type');
@@ -345,6 +349,18 @@ function openYoutube(url) {
         return false;
     }
 }
+
+function openPDF(pdf) {
+    // Check if input is a valid PDF url
+    if (pdf.match(/\.(pdf)$/) != null) {
+        window.open(pdf, '_blank');
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 
 // open window function
 function openWindow(text, content, contentType, albumArt = null) {
