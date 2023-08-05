@@ -10,6 +10,7 @@ function main() {
     let isMouseOut = false;
     let wao = false;
     let pet = false;
+    let ready_to_meow = false;
     let outId;
     let overId;
 
@@ -23,6 +24,7 @@ function main() {
                 kittyCat.src = "./images/catSleep/kittypet.png";
                 meow.pause();
                 purr.play(); // play the audio here
+                ready_to_meow = true;
             }
         }, 500);
     });
@@ -33,7 +35,12 @@ function main() {
         clearTimeout(overId);
         kittyCat.src = "./images/catSleep/kittywao.png";
         purr.pause();
-        meow.play();
+
+        if (ready_to_meow){
+            meow.play();
+            ready_to_meow = false;
+        }
+        
         
         // wait 1 second
         outId = setTimeout(function() {
