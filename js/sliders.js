@@ -24,22 +24,22 @@ function addEventListeners() {
 async function main() {
     const sliders = document.querySelectorAll(".sliderImages");
     const numSliders = sliders.length;
+    let maxImageCount = 17; // maximum number of images expected
 
-    let i = 1;
-    while (true) {
-        let url = `./images/banners/banner (${i}).png`;
 
-        try {
-            let img = await checkImage(url);
-            img.id = "sliderImg";
-            sliders[i % numSliders].appendChild(img);
-        } catch (error) {
-            console.log('Error: ' + error);
-            break; // if an image URL doesn't exist, stop the loop
-        }
 
-        i++;
-    }
+
+    let promises = Array.from({length: maxImageCount}, (_, i) => {
+        let url = `./images/banners/banner (${i+1}).png`;
+        return checkImage(url)
+            .then(img => {
+                img.id = "sliderImg";
+                sliders[i % numSliders].appendChild(img);
+            })
+            .catch(error => console.log('Error: ' + error));
+    });
+
+    await Promise.all(promises);
 
     // duplicate the children of sliders
     for (let i = 0; i < numSliders; i++) {
@@ -51,5 +51,6 @@ async function main() {
     }
     addEventListeners();
 }
+
 
 window.onload = main;
