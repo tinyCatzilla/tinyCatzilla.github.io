@@ -153,8 +153,8 @@ async function getWeather(){
     let sunsetTime = 0;
     
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`);
-        const response_forecast = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`);
+        const response_forecast = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}`);
         const data = await response.json();
         const data_forecast = await response_forecast.json()
         
