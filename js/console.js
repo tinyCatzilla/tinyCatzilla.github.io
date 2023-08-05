@@ -29,7 +29,7 @@ let files = {
     '/music': ['BRAINWORMS.mp3', 'eleanor_rigby.mp3', 'FATALITY.mp3', 'free_money.mp3', 'gallery_piece.mp3', 'i_wanna_know.mp3', 'imovie180.mp3', 
     'makeup_for_boys.mp3', 'mind_fuzz.mp3', 'snail_man.mp3', 'song1.mp3'],
     '/pictures': ['winton.gif', 'sparkle.gif'],
-    '/videos': ['aa_ee_oo.yt', 'csm.yt', 'spamton.yt']
+    '/videos': ['aa_ee_oo.yt', 'bangdingow.yt', 'cigarettes.yt', 'csm.yt', 'hihowie.yt', 'manul.yt', 'resolution.yt', 'thinkers.yt']
 };
 let fileContents = {
     '/documents/stokes_quote.txt': "Stokes theorem shares three important attributes with many fully evolved major theorems: \n" +
@@ -56,10 +56,13 @@ let fileContents = {
 
     '/videos/aa_ee_oo.yt': 'https://www.youtube-nocookie.com/embed/PMZxehxMvHU?autoplay=1',
     '/videos/csm.yt': 'https://www.youtube-nocookie.com/embed/GcIs_a3Epfg?autoplay=1',
-    '/videos/spamton.yt': 'https://www.youtube-nocookie.com/embed/d8RkcUiCxuE?autoplay=1'
+    '/videos/manul.yt': 'https://www.youtube-nocookie.com/embed/5YLSP6b6yHg?autoplay=1',
+    '/videos/thinkers.yt': 'https://www.youtube-nocookie.com/embed/eV56cigF6Bw?autoplay=1',
+    '/videos/bangdingow.yt': 'https://www.youtube-nocookie.com/embed/SjUPb4J_MGo?autoplay=1',
+    '/videos/resolution.yt': 'https://www.youtube-nocookie.com/embed/NVGuFdX5guE?autoplay=1',
+    '/videos/cigarettes.yt': 'https://www.youtube-nocookie.com/embed/vkUyYv4gjlY?autoplay=1',
+    '/videos/hihowie.yt': 'https://www.youtube-nocookie.com/embed/70S6NceWBNo?autoplay=1',
 };
-
-
 
 var term = $('.console').terminal({
     hello: function() {
@@ -374,8 +377,7 @@ function openWindow(text, content, contentType, albumArt = null) {
     let newSpanTitle = document.createElement("span");
     newSpanTitle.classList.add("contentTitle");
     newSpanTitle.classList.add("draggable");
-    newSpanTitle.innerHTML = "Window " + newDiv.id + `<button class="closeBtn" onclick="this.parentElement.parentElement.style.display='none'">x</button>`;
-    // newSpanTitle.innerHTML = content + `<button class="closeBtn" onclick="this.parentElement.parentElement.style.display='none'">x</button>`;
+    newSpanTitle.innerHTML = "Window " + newDiv.id + `<button class="closeBtn" onclick="this.parentElement.parentElement.remove()">x</button>`;
     newDiv.appendChild(newSpanTitle);
 
     // set the X and Y position of newDiv to be random and within the screen
