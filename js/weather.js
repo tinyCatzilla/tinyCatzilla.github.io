@@ -100,29 +100,29 @@ function loadWeather(weather){
         evening = isTimeWithinInterval(sunsetHour_Lower, sunsetMin_Lower, sunsetHour_Up, sunsetMin_Up, hourNum, minNum);
     }
 
-    let background = "url(./images/cityWidget/clearBlue.png)";
+    let background = "url(./images/cityWidget/dayClear.gif)";
     let foreground;
 
     if (overcast && drawDay){
-        background = "url(./images/cityWidget/overCast.png)";
+        background = "url(./images/cityWidget/overcast.gif)";
     }
     else if (drawClouds){
         if (evening){
-            background = "url(./images/cityWidget/duskCloudy.png)";
+            background = "url(./images/cityWidget/duskCloudy.gif)";
         }
         else if (!drawDay){
-            background = "url(./images/cityWidget/nightCloudy.png)";
+            background = "url(./images/cityWidget/nightCloudy.gif)";
         }
         else {
-            background = "url(./images/cityWidget/cloudyBlue.png)";
+            background = "url(./images/cityWidget/dayCloudy.gif)";
         }
     }
     else {
         if (evening){
-            background = "url(./images/cityWidget/dusk.png)";
+            background = "url(./images/cityWidget/duskClear.gif)";
         }
         else if (!drawDay){
-            background = "url(./images/cityWidget/night.png)";
+            background = "url(./images/cityWidget/nightClear.gif)";
         }
     }
 
