@@ -37,7 +37,7 @@ let fileContents = {
     "2. It is trivial because the terms appearing in it have been properly defined. \n" +
     "3. It has significant consequences.",
     '/documents/private_do_not_open.txt': "meowmeow im a kitty :3 murr mrrp",
-    // '/documents/resume.pdf': './images/console/resume.pdf',
+    '/documents/resume.pdf': './images/console/resume.pdf',
 
     '/music/BRAINWORMS.mp3': './images/console/BRAINWORMS.mp3',
     '/music/eleanor_rigby.mp3': './images/console/eleanor_rigby.mp3',
@@ -182,7 +182,6 @@ var term = $('.console').terminal({
     },
 
     otter: function() {
-        this.echo("Opening otter window...");
         openWindow(false, chooseOtterPic(), 'image');
         this.echo("Opened otter window :)");
     },
@@ -381,11 +380,19 @@ function openWindow(text, content, contentType, albumArt = null) {
     newDiv.appendChild(newSpanTitle);
 
     // set the X and Y position of newDiv to be random and within the screen
-    const body = document.querySelector("body");
-    let randomX = Math.floor(Math.random() * (body.scrollWidth - 600));
-    let randomY = Math.floor(Math.random() * (body.scrollHeight - 600));
+    // const body = document.querySelector("body");
+    // let randomX = Math.floor(Math.random() * (body.scrollWidth - 600));
+    // let randomY = Math.floor(Math.random() * (body.scrollHeight - 600));
+    // newDiv.style.left = randomX + "px";
+    // newDiv.style.top = randomY + "px";
+
+    // set the X and Y position of newDiv to be somewhere the user can see (not off screen, including scroll)
+    let randomX = Math.floor(Math.random() * (window.innerWidth - 600)) + window.scrollX;
+    let randomY = Math.floor(Math.random() * (window.innerHeight - 600)) + window.scrollY;
+    
     newDiv.style.left = randomX + "px";
     newDiv.style.top = randomY + "px";
+    
 
     if (content) {
         let newContentElement;
