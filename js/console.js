@@ -25,13 +25,14 @@ let directories = {
     '/videos': []
 };
 let files = {
-    '/documents': ['stokes_quote.txt', "private_do_not_open.txt"],
+    '/documents': ['de_finetti.pdf', 'stokes_quote.txt', "private_do_not_open.txt"],
     '/music': ['BRAINWORMS.mp3', 'eleanor_rigby.mp3', 'FATALITY.mp3', 'free_money.mp3', 'gallery_piece.mp3', 'i_wanna_know.mp3', 'imovie180.mp3', 
     'makeup_for_boys.mp3', 'mind_fuzz.mp3', 'snail_man.mp3', 'song1.mp3'],
     '/pictures': ['winton.gif', 'sparkle.gif'],
     '/videos': ['aa_ee_oo.yt', 'bangdingow.yt', 'cigarettes.yt', 'csm.yt', 'hihowie.yt', 'manul.yt', 'resolution.yt', 'thinkers.yt']
 };
 let fileContents = {
+    '/documents/de_finetti.pdf': './images/console/de_finetti.pdf',
     '/documents/stokes_quote.txt': "Stokes theorem shares three important attributes with many fully evolved major theorems: \n" +
     "1. It is trivial. \n" +
     "2. It is trivial because the terms appearing in it have been properly defined. \n" +

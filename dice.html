@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>catzilla! dice</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="images/favicon_io/site.webmanifest">
+
+        <link href="./css/style.css" rel="stylesheet" >
+        <link href="./css/stars.css" rel="stylesheet" >
+        <style id="starStyles"></style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+
+        <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
+        <script src="./js/time.js"></script>
+        <script src="./js/copytext.js"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"defer></script>
+    </head>
+    <body>
+        <div class="starField">
+            <div id='stars' class="stars"></div>
+            <div id='stars2' class="stars"></div>
+            <div id='stars3' class="stars"></div>
+        </div>
+        <script src="./js/stars.js"></script>
+        <div class="mainArea">
+            <div class="top">
+                <div class="logo">
+                    <a href="./"><img src="images/catzilla.png" alt="catzilla!"></a>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="center">
+                    <div class="content container">
+                        <h1>Dice</h1>
+                        "Rolling a fair, six-sided die" often has the implication of a uniform distribution over the set \(\{1,2,3,4,5,6\}\). But which part of that statement induced the constraint on the die faces?
+                        Are some die... more fair than others? <br><br>
+                        We begin by working through some of the mathematics used to describe dice, 
+                        in pursuit of analyzing a rollercoaster of a dice tournament run by my friend. 
+                        <br><br>
+
+                        <hr>
+                        <div id="ToCFont">
+                            <a href="#Terminology">1. Terminology</a>
+                            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+                            <div class="ToCContent">
+                            <ul id="ToC">
+                                <li>
+                                    <a href="#Standard">A fair, six-sided, <i>standard</i> die</a>
+                                </li>
+                                <li>
+                                    <a href="#Nonstandard">A fair, six-sided die</a>
+                                </li>
+                            </div>
+                            <br>
+                            <a href="#Properties">2. Properties of Dice</a>
+                            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+                            <div class="ToCContent">
+                            <ul id="ToC">
+                                <li>
+                                    <a href="#Expectation">Expectation</a>
+                                </li>
+                                <li>
+                                    <a href="#Order">Order Statistics</a>
+                                </li>
+                                <li>
+                                    <a href="#OrderDist">Distribution of Order Statistics</a>
+                                </li>
+                                <li>
+                                    <a href="#OrderDens">Density of Order Statistics</a>
+                                </li>
+                                <li>
+                                    <a href="#Maximum">The Maximum of Dice Rolls</a>
+                                </li>
+                            </ul>
+                            </div>
+                            <br>
+                            <a href="#Properties">3. Beginning our Descent into Madness</a>
+                            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+                            <div class="ToCContent">
+                            <ul id="ToC">
+                                <li>
+                                    <a href="#TournamentIntro">Introduction to the Tournament</a>
+                                </li>
+                                <li>
+                                    <a href="#Submission">My Submission</a>
+                                </li>
+                                <li>
+                                    <a href="#MaximumRevisited">Revisiting Maximum of Dice Rolls</a>
+                                </li>
+                                <li>
+                                    <a href="#Rolls">Rolls</a>
+                                </li>
+                                <li>
+                                    <a href="#Rolloff">Rolloff</a>
+                                </li>
+                                <li>
+                                    <a href="#Generating">Generating Functions</a>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <script>
+                            var coll = document.getElementsByClassName("collapsible");
+                            var i;
+                            for (i = 0; i < coll.length; i++) {
+                                coll[i].addEventListener("click", function() {
+                                    this.classList.toggle("active");
+                                    var content = this.nextElementSibling;
+                                    if (content.style.display === "block") {
+                                        content.style.display = "none";
+                                    } else {
+                                        content.style.display = "block";
+                                    }
+                                });
+                            }
+
+                            function changeText(objButton)
+                            {
+                                if (objButton.innerHTML == "[+]") {
+                                    objButton.innerHTML = "[-]";
+                                }
+                                else{
+                                    objButton.innerHTML = "[+]";
+                                }
+                            }
+
+                        </script>
+
+                        <u><h2 id="Terminology">Terminology</h2></u>
+                        <div class="Definition">
+                        <bluepurp><b>[A fair, six-sided, <i>standard</i> die]</b></bluepurp><a name="Standard"></a>
+                        <ul>
+                            <li>
+                                A <bluepurp><i>fair</i></bluepurp> die entails that each face has an equal probability of being rolled.
+                            </li>
+                            <li>
+                                An <bluepurp><i>\(n\)</i>-sided</bluepurp> die is a die with \(n\) faces.
+                            </li>
+                            <li>
+                                A <bluepurp><i>standard</i></bluepurp> die hereby refers to a die whose faces are the set \(\{1,2,\ldots,n\}\), where \(n\) is the number of faces.
+                            </li>
+                        </ul>
+                        Taken together, a fair, six-sided, standard die is the die we are most familiar with, with faces \(\{1,2,3,4,5,6\}\).
+                        Take notice of our insistence to use the word "standard".
+                        </div>
+                        <br>
+                        <div class="Definition">
+                            <bluepurp><b>[A fair, six-sided die]</b></bluepurp><a name="Nonstandard"></a>
+                            A fair, six-sided die is often taken as nominally standard. Defining a standard die is clunky, and is often omitted.
+                            Here though, we define a fair, six-sided die as a die with six faces \(\{a_1,\ldots,a_6\}\) such that each face has an equal \(\frac{1}{6}\) probability of being rolled.
+                            There are no restrictions on the values of \(a_1,\ldots,a_6\).
+                            <br>
+                            Yes, our non-standard die still define a valid probability distribution. <a href="./images/console/de_finetti.pdf" target="_blank">Cry about it.</a> (You don't need to read that.)
+                        </div>
+                        <br>
+                        <hr>
+
+                        <u><h2 id="Properties">Properties of Dice</h2></u>
+                        <div class="Definition">
+                        <bluepurp><b>[Expectation]</b></bluepurp><a name="Expectation"></a>
+                        The expected value of a random variable \(X\) is the weighted average of all possible values of \(X\), weighted by their respective probabilities.
+                        <br><br>
+                        Traditionally, we represent the probability distribution of \(X\) as a function \(f_X(x)\) that maps a value \(x\) to its probability \(f_X(x)\).
+                        This allows us to write the expected value of \(X\) as
+                        \[\mathbb{E}[X]=\sum_{x\in\Omega}xf_X(x),\]
+                        where \(\Omega\) is the set of all possible values of \(X\), or the sample space.
+                        <br><br>
+                        In our case, \(\Omega\) is just the faces of the die. Moreover for an \(n\)-sided fair die, \(f_X(x)=\frac{1}{n}\), as all faces are equally likely.
+                        <br>
+                        The expected value of a fair, six-sided, standard die is thus
+                        \[\mathbb{E}[X]=\sum_{x=1}^{6} x\cdot \frac{1}{6} = \frac{1}{6}(1+2+3+4+5+6)=3.5\]
+                        </div>
+                        <br>
+                        <div class="Definition">
+                        <bluepurp><b>[Order Statistics]</b></bluepurp><a name="Order"></a>
+                        Given random variables \(X_1,\ldots,X_n\) all independent with identical distribution, 
+                        the order statistics \(X_{(1)},\ldots,X_{(n)}\) are defined by sorting the realizations (observed values) of \(X_1,\ldots,X_n\) in ascending order.
+                        <br><br>
+                        For example, if we are to roll a fair, six-sided, standard die three times, we would have three random variables \(X_1,X_2,X_3\), each representing one roll.
+                        If our outcomes are realized to be \(x_1=3,x_2=1,x_3=5\), then the order statistics are realized as \(x_{(1)}=1,x_{(2)}=3,x_{(3)}=5\).
+                        <br><br>
+                        What is interesting though, is that the order statistics of random variables are themselves random variables. 
+                        We may define their distributions and compute their expected values.
+                        </div>
+                        <br>
+                        <div class="Problem">
+                        <orange><b>[Distribution of Order Statistics]</b></orange> <a name="OrderDist"></a>
+                        Let \(X_1,\ldots,X_n\) be independent and identically distributed random variables with common distribution \(F(x)\) and common density \(f(x)\).
+                        Find the distribution of the \(j\)-th order statistic \(X_{(j)}\).
+                        <br><br>
+                        <i>Proof. </i>
+                        The distribution of a random variable \(X\) is defined by its cumulative distribution function (CDF) \(F_X(x)\), 
+                        the probability that \(X\) is less than or equal to \(x\). So in this case, we may compute the CDF of \(X_{(j)}\) as
+                        \(F_{X_{(j)}}(x) = P(X_{(j)}\leq x).\)
+                        <br><br>
+                        But by definition, \(X_{(j)}\leq x\) if and only if at least \(j\) of the \(X_1,\ldots,X_n\) random variables are less than or equal to \(x\).
+                        We can compute this probability by viewing it as a binomial distribution, where the probability of success is \(F(x)\) and the number of trials is \(n\).
+                        Thus, we have
+                        \[F_{X_{(j)}}(x) = P(X_{(j)}\leq x) = \sum_{k=j}^{n}\binom{n}{k} F(x)^k (1-F(x))^{n-k}.\]
+                        If you are not familiar with binomial distributions, 
+                        notice that \(F(x)^k\) is the probability that \(k\) of the \(X_1,\ldots,X_n\) random variables are less than or equal to \(x\), 
+                        and \((1-F(x))^{n-k}\) is the probability that the remaining \(n-k\) random variables are greater than \(x\). 
+                        Then, we sum from \(k=j\) to \(n\) for all amounts of \(k\) such that at least \(j\) random variables are less than or equal to \(x\), 
+                        and \(\binom{n}{k}\) counts how many ways we can choose which \(k\) random variables were less than or equal to \(x\).
+                        \(\blacksquare\)
+                        </div>
+                        <br>
+                        <div class="Problem">
+                        <orange><b>[Density of Order Statistics]</b></orange> <a name="OrderDens"></a>
+                        Let \(X_1,\ldots,X_n\) be independent and identically distributed random variables with common distribution \(F(x)\) and common density \(f(x)\).
+                        Find the density of the \(j\)-th order statistic \(X_{(j)}\).
+                        <br><br>
+                        <i>Proof. </i>
+                        The density of a random variable \(X\) is the function discussed in the previous section, \(f_X(x)\), 
+                        which maps values \(x\) in the sample space to their probability \(f_X(x)\).
+                        <br><br>
+                        We can do a similar combinatorial argument here. We want to find the probability that \(X_{(j)}\) is equal to some value \(x\). 
+                        This entails that exactly \(j-1\) of the \(X_1,\ldots,X_n\) random variables are less than or equal to \(x\), 
+                        while \(n-j\) random variables are greater than \(x\), and with the final remaining random variable being equal to \(x\).
+                        <br><br>
+                        Thus, we have that the density of \(X_{(j)}\) is
+                        \[f_{X_{(j)}}(x) = \binom{n}{j-1, 1, n-j} F(x)^{j-1} (1-F(x))^{n-j} f(x).\]
+                        The multinomial coefficient \(\binom{n}{j-1, 1, n-j}\) is an extension of the binomial coefficient in the section before,
+                        and counts the number of ways we can divide the \(n\) random variables into three groups: 
+                        <ul>
+                            <li>\(j-1\) random variables less than or equal to \(x\)</li>
+                            <li>1 random variable equal to \(x\)</li>
+                            <li>\(n-j\) random variables greater than \(x\)</li>
+                        </ul>
+                        The interpretations of \(F(x)^{j-1}\) and \((1-F(x))^{n-j+1}\) are analogous to before, 
+                        but we also have the additional \(f(x)\) term, for the probability that the final remaining random variable is equal to \(x\).
+                        \(\blacksquare\)
+                        </div>
+                        <br>
+                        <div class="Problem">
+                        <orange><b>[The Maximum of Dice Rolls]</b></orange> <a name="Maximum"></a>
+                        Suppose we roll a fair, six-sided, standard dice \(n\) times. What is the expected value of the highest roll?
+                        <br><br>
+                        <i>Proof. </i>
+                        We can describe the \(n\) rolls as \(n\) independent and identically distributed random variables \(X_1,\ldots,X_n\), 
+                        where each \(X_i\) is a random variable representing the value of the \(i\)-th roll.
+                        Then, the maximum of the \(n\) rolls is the \(n\)-th order statistic \(X_{(n)}\). <br><br>
+                        We can compute the expected value of \(X_{(n)}\) by using the density of order statistics from the previous section.
+                        \[\mathbb{E}[X_{(n)}] = \sum_{x=1}^{6} x \binom{n}{n-1, 1, n-n} F(x)^{n-1} (1-F(x))^{n-n} f(x).\]
+                        Notice that since \(j=n\), a lot of the terms in the density of order statistics cancel out, leaving us with the much simpler
+                        \[\mathbb{E}[X_{(n)}] = \sum_{x=1}^{6} x n F(x)^{n-1} f(x).\]
+                        Also, we know that \(f(x)=\frac{1}{6}\), and it is easily thought through how \(F(x)=\frac{x}{6}\).
+                        So we can substitute these in, giving the workable
+                        \[\mathbb{E}[X_{(n)}] = \sum_{x=1}^{6} x n \left(\frac{x}{6}\right)^{n-1} \frac{1}{6}.\]
+                        Now, we can just rearrange the terms to get a simple result:
+                        \[\mathbb{E}[X_{(n)}] = \frac{n}{6^n} \sum_{x=1}^{6} x^{n}.\quad \blacksquare\]
+                        </div>
+                        <br>
+                        <hr>
+
+                        <u><h2 id="Descent">Beginning our Descent into Madness</h2></u>
+                        <div class="Definition">
+                        <bluepurp><b>[Introduction to the Tournament]</b></bluepurp><a name="TournamentIntro"></a>
+                        My friend's tournament was proposed as follows:
+                        <ul>
+                            <li>You can put any positive rational numbers on each of the 6 sides of the dice, as long as all the numbers add up to <b>Exactly</b> 21.</li>
+                            <li>You may not put 3.5 on every face (to prevent a potential situation where there cannot be a winner).</li>
+                        </ul>
+                        "I will create a randomly seeded single elimination bracket tournament (depending on number of participants, this format might change) with all participants, and we'll see who is the luckiest along the way!
+                        The basic gameplay is that I roll each of the dice and we see who gets a higher number to see who moves on. 
+                        There might be some undisclosed twists and turns along the way as we get further into the bracket! 
+                        (However I will never reverse the core gameplay mechanic of higher number is better).
+                        <br>
+                        You may submit up to 3 dice, which may be the same or different, it's up to you! This is to prevent someone from being very unlucky and eliminated too early."
+                        <br><br>
+                        Exactly 21 is, of course, a reference to the sum of the numbers on the faces of a fair, six-sided, standard die. 
+                        Is merely sharing the same sum enough to make most dice similar? 
+                        How much does the game-theoretic component of the tournament matter?
+                        <br>
+                        I was honestly fascinated, and decided to submit my dice. 
+                        </div>
+                        <br>
+
+                        <div class="Definition">
+                        <bluepurp><b>[My Submission]</b></bluepurp><a name="Submission"></a>
+                        So, I only learned about this tournament the night before the deadline, and wasn't exactly in a place to bash out calculations. 
+                        I decided to just submit off my intuition, and hope for the best. My submission was as follows:
+                        <ul>
+                            <li>\(\{4/3, 7/3, 13/3, 13/3, 13/3, 13/3\}\)</li>
+                            <li>\(\{1/2, 3/2, 7/2, 7/2, 9/2, 15/2\}\)</li>
+                            <li>\(\{1/5, 1, 16/5, 16/5, 26/5, 41/5\}\)</li>
+                        </ul>
+                        My thought process was to mostly make balanced dice, 
+                        maximizing my likelihood to beat unbalanced dice that often had a high number on one face, but low numbers on the rest. 
+                        In hindsight, I should have thought less about the dice themselves, and more about the tournament format... But more on this later.
+                        </div>
+                        <br>
+
+                        <div class="Problem">
+                        <orange><b>[Revisiting Maximum of Dice Rolls]</b></orange><a name="MaximumRevisited"></a>
+                        Let's revisit the maximum of \(n\) dice rolls, but for non-standard die. 
+                        The only thing that changes are the faces and distribution \(F(x)\), which is no longer \(\frac{x}{6}\). 
+                        Instead, we must compute the distribution as
+                        \[F(x) = P(X\leq x) = \sum_{a_i\leq x} \frac{a_i}{6},\]
+                        where \(a_i\) is the value on the \(i\)-th face of the die.
+                        <br><br>
+                        If we substitute this into the expected value of the maximum of \(n\) dice rolls, we get
+                        \[\mathbb{E}[X_{(n)}] = \frac{n}{6^n} \sum_{i=1}^{6} a_i \Big(\sum_{a_i\leq x} a_i\Big)^{n-1}.\quad \blacksquare\]
+                        </div>
+                        <br>
+
+                        <div class="Problem">
+                        <orange><b>[Rolls]</b></orange><a name="Rolls"></a>
+                        In the case of a single roll, we have \(n=1\), and this reduces to
+                        \[\mathbb{E}[X_{(1)}] = \frac{1}{6} \sum_{i=1}^{6} a_i = \mathbb{E}[X],\]
+                        which makes sense. The expected value of the maximum of one roll, is just the expected value of one roll.
+                        <br>
+                        Moreover, we have the constraint that the sum of the faces must be 21, so
+                        \[\mathbb{E}[X] = \frac{1}{6} \sum_{i=1}^{6} a_i = \frac{21}{6}.\quad \blacksquare\]
+                        <br>
+                        But we don't care about single rolls in this tournament. 
+                        Even in the simplest situation, we have 2 rolls, one for each player.
+                        <br><br>
+                        Unfortunately though, the two dice do not have a common distribution.  
+                        We could define the faces of the dice as \(a_i\) and \(b_i\) and proceed with computation, but this would be a mess. 
+                        Things are getting out of hand fast, and we need a more efficient representation.
+                        </div>
+                        <br>
+
+                        <div class="Problem">
+                        <orange><b>[Rolloff]</b></orange><a name="Rolloff"></a>
+                        The steps we need are:
+                        <ul>
+                            <li>Find a robust way to look at the maximum of \(n\) rolls fr arbitrary faces</li>
+                            <li>Find a robust way to compare two dice</li>
+                            <li>Find a robust way to consider the sum of dice</li>
+                        </ul>
+                        Notes: Since all dice are rational, we can reduce the problem to integers by multiplying by the least common denominator.
+                        Thank god.
+
+
+
+
+                        </div>
+                        <br>
+
+                        
+                        <div class="Definition">
+                        <bluepurp><b>[Generating Functions]</b></bluepurp><a name="Generating"></a>
+                            <div class="quote-container">
+                                <div class="quote-text">
+                                    "A generating function is a clothesline on which we hang up a sequence of numbers for display."
+                                </div>
+                                <div class="quote-attribution">
+                                    — Herbert Wilf, <a href="https://www2.math.upenn.edu/~wilf/DownldGF.html" target="_blank"><i>Generatingfunctionology</i></a> (1994)
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <br>
+                        <hr>
+
+
+                    </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        </div>
+      </html>

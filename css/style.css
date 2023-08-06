@@ -286,6 +286,27 @@ ul {
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.212);
 }
 
+.quote-container {
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 10px 25px;
+    border-left: 3px solid #333;
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.quote-text {
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.quote-attribution {
+    text-align: right;
+    font-weight: bold;
+}
+
 .centred {
     display: flex;
     flex-direction: column;
