@@ -27,7 +27,7 @@ body {
 
 .videoBg {
     opacity: 0;
-    transition: all 1s ease-in-out;
+    transition: all 3s ease-in-out;
 }
 .show {
     opacity: 1;

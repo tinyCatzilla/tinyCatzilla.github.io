@@ -5,6 +5,8 @@ function main() {
     const purr = new Audio("./images/catSleep/purr.mp3");
     const meow = new Audio("./images/catSleep/meow.wav");
     purr.loop = true;
+    meow.volume = 0.25;
+    purr.volume = 0.7;
 
     let purred = false;
     let isMouseOut = false;
