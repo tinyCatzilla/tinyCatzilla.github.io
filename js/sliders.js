@@ -16,6 +16,7 @@ const links = {
     15 : "/vangogh",
     16 : "https://www.sonyclassics.com/whiplash/",
     17 : "https://ramiels.me/",
+    18 : "https://www.ace-attorney.com/trilogy/us/"
 }
 
 
