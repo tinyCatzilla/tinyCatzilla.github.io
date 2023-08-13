@@ -10,7 +10,7 @@ const links = {
     9 : "https://store.steampowered.com/app/774171/Muse_Dash/",
     10 : "https://anilist.co/anime/10165/Nichijou--My-Ordinary-Life/",
     11 : "/overwatch",
-    12 : "/sanctuary",
+    12 : "/plan",
     13 : "https://store.steampowered.com/app/281990/Stellaris/",
     14 : "https://store.steampowered.com/app/447530/VA11_HallA_Cyberpunk_Bartender_Action/",
     15 : "/vangogh",
