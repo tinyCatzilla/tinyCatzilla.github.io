@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>catzilla! words</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="images/favicon_io/site.webmanifest">
+
+        <link href="./css/style.css" rel="stylesheet" >
+        <link href="./css/stars.css" rel="stylesheet" >
+        <style id="starStyles"></style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+
+        <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
+        <script src="./js/time.js"></script>
+        <script src="./js/copytext.js"></script>
+        </head>
+    <body>
+        <div class="starField">
+            <div id='stars' class="stars"></div>
+            <div id='stars2' class="stars"></div>
+            <div id='stars3' class="stars"></div>
+        </div>
+        <script src="./js/stars.js"></script>
+        <div class="mainArea">
+            <div class="top">
+                <div class="logo">
+                    <a href="./"><img src="images/catzilla.png" alt="catzilla!"></a>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="center">
+                    <div class="content container">
+                        <h1>Words</h1>
+                        A personal dictionary of words I have been learning.
+                        <br><br>
+
+                        <!-- <hr> -->
+                        <!-- <div id="ToCFont"> -->
+                        <!--     <a href="#Ch1">Chapter 1.</a> -->
+                        <!--     <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button> -->
+                        <!--     <div class="ToCContent"> -->
+                        <!--     <ul id="ToC"> -->
+                        <!--         <li> -->
+                        <!--             <a href="#E1">bweh</a> -->
+                        <!--         </li> -->
+                        <!--     </ul> -->
+                        <!--     </div> -->
+                        <!--     <br> -->
+                        <!-- </div> -->
+                        <!-- <hr> -->
+
+                        <script>
+                            var coll = document.getElementsByClassName("collapsible");
+                            var i;
+                            for (i = 0; i < coll.length; i++) {
+                                coll[i].addEventListener("click", function() {
+                                    this.classList.toggle("active");
+                                    var content = this.nextElementSibling;
+                                    if (content.style.display === "block") {
+                                        content.style.display = "none";
+                                    } else {
+                                        content.style.display = "block";
+                                    }
+                                });
+                            }
+
+                            function changeText(objButton)
+                            {
+                                if (objButton.innerHTML == "[+]") {
+                                    objButton.innerHTML = "[-]";
+                                }
+                                else{
+                                    objButton.innerHTML = "[+]";
+                                }
+                            }
+
+                        </script>
+
+
+                        <!-- <u><h2 id="Ch1">Chapter 1.</h2></u> -->
+                        <!-- <br><br> -->
+                        <div class="Definition">
+                        <orange><b>[pana(e)sthesia]</b></orange><a name="panasthesia"></a>
+                        - awareness or perception
+                        </div>
+                        <div class="Definition">
+                        <orange><b>[prosopagnosia]</b></orange><a name="prosopagnosia"></a>
+                        - face blindness
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[pareidolia]</b></orange><a name="pareidolia"></a>
+                            - seeing patterns, typically faces, in things
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[ichthyofauna]</b></orange><a name="ichthyofauna"></a>
+                            - fish in area
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[avifauna]</b></orange><a name="avifauna"></a>
+                            - birds in area
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[supine]</b></orange><a name="supine"></a>
+                            - lay on back (antonym of prone)
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[prehensile]</b></orange><a name="prehensile"></a>
+                            - (organ) adapted for grabbing
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[prehension]</b></orange><a name="prehension"></a>
+                            - capacity for grabbing
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[sesquipedalia]</b></orange><a name="sesquipedalia"></a>
+                            - overly wordy
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[foutra]</b></orange><a name="foutra"></a>
+                            - archaic vulgar expression of contempt
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[brouhaha]</b></orange><a name="brouhaha"></a>
+                            - uproar, noisy reaction
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[clodpoll]</b></orange><a name="clodpoll"></a>
+                            - stupid person
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[hematocrit]</b></orange><a name="hematocrit"></a>
+                            - measure of % of red blood cells
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[sphygmomanometer]</b></orange><a name="sphygmomanometer"></a>
+                            - blood pressure measurer
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[recondite]</b></orange><a name="recondite"></a>
+                            - abstruse
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[abstruse]</b></orange><a name="abstruse"></a>
+                            - obscure, difficult to understand
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[presage]</b></orange><a name="presage"></a>
+                            - indicate bad omen
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[presentiment]</b></orange><a name="presentiment"></a>
+                            - feel bad omen
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[prescient]</b></orange><a name="prescient"></a>
+                            - knowledge before happens
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[predilection]</b></orange><a name="predilection"></a>
+                            - special fondness
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[laconic]</b></orange><a name="laconic"></a>
+                            - speaks briefly
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[jeremiad]</b></orange><a name="jeremiad"></a>
+                            - long speech of complaints
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[ciceron]</b></orange><a name="ciceron"></a>
+                            - guide gives speeches to sightseers
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[ramekin]</b></orange><a name="ramekin"></a>
+                            - little white dish
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[maudlin]</b></orange><a name="maudlin"></a>
+                            - overly self-pitying
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[adroit]</b></orange><a name="adroit"></a>
+                            - skillful
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[insouciant]</b></orange><a name="insouciant"></a>
+                            - lack of interest
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[gauche]</b></orange><a name="gauche"></a>
+                            - clumsy, socially awkward
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[kitsch]</b></orange><a name="kitsch"></a>
+                            - cheap art whose owners are usually aware of lack of value(!)
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[pastiche]</b></orange><a name="pastiche"></a>
+                            - a mixture of elements that typically don’t go together
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[littoral]</b></orange><a name="littoral"></a>
+                            - situated on the shore of a sea or lake
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[dilettante]</b></orange><a name="dilettante"></a>
+                            - someone interested in an area but not a true expert
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[cognoscenti]</b></orange><a name="cognoscenti"></a>
+                            - experts in a particular subject
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[waifish]</b></orange><a name="waifish"></a>
+                            - thin
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[skirred]</b></orange><a name="skirred"></a>
+                            - move rapidly
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[protandry]</b></orange><a name="protandry"></a>
+                            - mtf sequential hermaphroditism
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[protogyny]</b></orange><a name="protogyny"></a>
+                            - ftm sequential hermaphroditism
+                        </div>
+                        <div class="Definition">
+                        <orange><b>[flimflam]</b></orange><a name="flimflam"></a>
+                        - (verb) to swindle; (noun) insincere talk
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[zydeco]</b></orange><a name="zydeco"></a>
+                            - genre of music blues and jazz
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[schadenfreude]</b></orange><a name="schadenfreude"></a>
+                            - delight taken in another's misfortune
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[atoll]</b></orange><a name="atoll"></a>
+                            - ring-shaped island of coral
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[acequias]</b></orange><a name="acequias"></a>
+                            - community-run irrigation
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[tergite]</b></orange><a name="tergite"></a>
+                            - dorsal plate of an arthropod
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[nanization]</b></orange><a name="nanization"></a>
+                            - artificial dwarfing (as of trees/plants by horticulturists)
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[aureola]</b></orange><a name="aureola"></a>
+                            - radiant cloud around iconographic/religious figures
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[mandorla]</b></orange><a name="mandorla"></a>
+                            - almond-shaped frame (aureola) around iconographic/religious figures
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[fetid]</b></orange><a name="fetid"></a>
+                            - heavy offensive smell
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[kerygmatic]</b></orange><a name="kerygmatic"></a>
+                            - adjective that preaches gospel
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[malaxate]</b></orange><a name="malaxate"></a>
+                            - make with clay
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[arriviste]</b></orange><a name="arriviste"></a>
+                            - ambitious person who recently gained power
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[sangfroid]</b></orange><a name="sangfroid"></a>
+                            - utter calmness
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[mesic]</b></orange><a name="mesic"></a>
+                            - moderate amount of moisture
+                        </div>
+                        <div class="Definition">
+                            <orange><b>[jiggety]</b></orange><a name="jiggety"></a>
+                            - jerky
+                        </div>
+
+
+                    </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        </div>
+      </html>
