@@ -15,6 +15,16 @@
         <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
         <script src="./js/time.js"></script>
         <script src="./js/copytext.js"></script>
+        <script type="text/javascript">
+        MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+              fontCache: 'global'
+            }
+          };
+          </script>
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"defer></script>
     </head>
     <body>
@@ -168,6 +178,20 @@
                                 </li>
                             </ul>
                             </div>
+                            <br>
+                            <a href="#HolderS">7. Holders</a>
+                            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+                            <div class="ToCContent">
+                            <ul id="ToC">
+                                <li>
+                                    <a href="#Young">7.1 Young's Inequality</a>
+                                </li>
+                                <li>
+                                    <a href="#Holder">7.2 Holder's Inequality</a>
+                                </li>
+                            </ul>
+                            </div>
+
                         </div>
                         <hr>
 
@@ -717,16 +741,31 @@
                         <br> 
                         <hr>
 
-                        <h2 id="Holder">Holder's Inequality</h2>
+                        <h2 id="HolderS">Holder's Inequality</h2>
                         <br><br>
                         <div class="Problem">
-                        <orange><b>[test]</b></orange> <a name="test"></a>
+                        <orange><b>[Young's Inequality]</b></orange> <a name="Young"></a>
+                        For $a,b\geq 0$, $p,q>1$ satisfying $1/p + 1/q = 1$, we have
+                        $$ab\leq \frac{a^p}{p} + \frac{b^q}{q}$$
                         <br><br>
                         <i>Proof. </i>
-                        <red>Not written up yet</red>
+                        By Jensens inequality we have that
+                        $$\log(\frac{1}{p}a^p + \frac{1}{q}b^q) \geq \log(\frac{1}{p}a^p) + \log(\frac{1}{q}b^q)\geq \log(ab).$$
                         \(\blacksquare\)
                         </div>
                         <br>
+                        <div class="Problem">
+                        <orange><b>[Holder's Inequality]</b></orange> <a name="Holder"></a>
+                        For $p,q>1$ satisfying $1/p + 1/q = 1$, we have
+                        $$\lVert fg \rVert_1 \leq \lVert f\rVert_p \lvert g\rVert_q$$
+                        <br><br>
+                        <i>Proof. </i>
+                        Substitute $a=\lvert f \rvert/\lVert f \lVert_p, b=\lvert g \rvert/\lVert g \lVert_p$ into Young's inequality. Since $f,g$ were normalized, we can assume their $p$-norm is 1. Then integrate both sides for
+                        $$\lVert fg \rVert_1 \leq 1/p + 1/q = 1.$$
+                        \(\blacksquare\)
+                        </div>
+                        <br>
+
                     </div>
                 </div>
               </div>

@@ -84,11 +84,11 @@ a:hover {
 
 
 .mainArea {
-    /* centred horiziontal div with flex row */
+    /* centred horiziontal div with flex col */
     display: flex;
     flex-direction: column;
     /* background: purple; */
-    width: 55%;
+    width: 65%;
 
     height: 100vh;
     position: relative;

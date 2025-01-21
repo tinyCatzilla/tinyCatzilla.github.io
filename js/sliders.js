@@ -15,7 +15,7 @@ const links = {
     14 : "https://store.steampowered.com/app/447530/VA11_HallA_Cyberpunk_Bartender_Action/",
     15 : "/vangogh",
     16 : "https://www.sonyclassics.com/whiplash/",
-    17 : "https://ramiels.me/",
+    17 : "https://vicvaleeva.github.io",
     18 : "https://www.ace-attorney.com/trilogy/us/"
 }
 

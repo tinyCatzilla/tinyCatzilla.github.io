@@ -13,7 +13,6 @@
 
 
 let options = ["Hiya!", "o/", "Mrrp", "Meow's it going?", "nya~", "Meowdy!", ":3", "hii"]
-// let welcomeText = options[Math.floor(Math.random() * options.length)]
 let windows = 1;
 
 let currentDirectory = '/';
@@ -66,10 +65,6 @@ let fileContents = {
 };
 
 var term = $('.console').terminal({
-    hello: function() {
-        this.echo('Hello, user. Wellcome to this terminal.', {keepWords: true});
-    },
-
     help: function() {
         this.echo("Available commands: \n" + 
         "help - shows this message \n" + 
@@ -263,9 +258,11 @@ var term = $('.console').terminal({
     about: function() {
         this.echo(`Hi :3 I'm purrminal, and I can run some basic commands. I'm still in development, so I can't do much yet.`);
     }
-}, {
-    // greetings: greetings.innerHTML
-    greetings: options[Math.floor(Math.random() * options.length)] + ' Type help to get started!'
+},
+{
+  greetings: options[Math.floor(Math.random() * options.length)] + ' Type help to get started!',
+  // focus:false
+  enabled: false
 });
 
 get_help = function() {

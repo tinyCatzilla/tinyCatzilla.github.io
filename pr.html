@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>catzilla! probability</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="images/favicon_io/site.webmanifest">
+
+        <link href="./css/style.css" rel="stylesheet" >
+        <link href="./css/stars.css" rel="stylesheet" >
+        <style id="starStyles"></style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+
+        <script src="https://kit.fontawesome.com/89192180dd.js" crossorigin="anonymous"></script>
+        <script src="./js/time.js"></script>
+        <script src="./js/copytext.js"></script>
+        <script type="text/javascript">
+        MathJax = {
+            tex: {
+              inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+              fontCache: 'global'
+            }
+          };
+          </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"defer></script>
+    </head>
+    <body>
+        <div class="starField">
+            <div id='stars' class="stars"></div>
+            <div id='stars2' class="stars"></div>
+            <div id='stars3' class="stars"></div>
+        </div>
+        <script src="./js/stars.js"></script>
+        <div class="mainArea">
+            <div class="top">
+                <div class="logo">
+                    <a href="./"><img src="images/catzilla.png" alt="catzilla!"></a>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="center">
+                    <div class="content container">
+                        <h1>Probability</h1>
+                        Solutions to exercises from Probability with a View toward Statistics.
+                        <br><br>
+
+                        <hr>
+                        <div id="ToCFont">
+                            <a href="#Ch1">Chapter 1.</a>
+                            <button type="button" class="collapsible" id="cute" onclick="changeText(this)">[+]</button>
+                            <div class="ToCContent">
+                            <ul id="ToC">
+                                <li>
+                                    <a href="#E1">bweh</a>
+                                </li>
+                            </ul>
+                            </div>
+                            <br>
+                        </div>
+                        <hr>
+
+                        <script>
+                            var coll = document.getElementsByClassName("collapsible");
+                            var i;
+                            for (i = 0; i < coll.length; i++) {
+                                coll[i].addEventListener("click", function() {
+                                    this.classList.toggle("active");
+                                    var content = this.nextElementSibling;
+                                    if (content.style.display === "block") {
+                                        content.style.display = "none";
+                                    } else {
+                                        content.style.display = "block";
+                                    }
+                                });
+                            }
+
+                            function changeText(objButton)
+                            {
+                                if (objButton.innerHTML == "[+]") {
+                                    objButton.innerHTML = "[-]";
+                                }
+                                else{
+                                    objButton.innerHTML = "[+]";
+                                }
+                            }
+
+                        </script>
+
+
+                        <u><h2 id="Ch1">Chapter 1.</h2></u>
+                        Measure theory.
+                        <br><br>
+                        <div class="Problem">
+                        <orange><b>[bweh]</b></orange><a name="E1"></a>
+                        dsfdsf
+                        <br>
+                        <i>Proof. </i>
+                        meow
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        </div>
+      </html>
