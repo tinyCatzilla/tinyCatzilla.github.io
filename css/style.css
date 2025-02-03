@@ -88,7 +88,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     /* background: purple; */
-    width: 65%;
+    width: 60%;
 
     height: 100vh;
     position: relative;
@@ -131,12 +131,12 @@ a:hover {
 
 .right {
     /* background:blue; */
-    width: 22%;
+    width: 20%;
 }
 .left {
     /* background: green; */
     /* flex-grow: 1; */
-    width: 78%;
+    width: 80%;
 }
 
 .center {
