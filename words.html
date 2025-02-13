@@ -23,6 +23,41 @@
             <div id='stars3' class="stars"></div>
         </div>
         <script src="./js/stars.js"></script>
+        <script>
+          
+          document.addEventListener("DOMContentLoaded", function () {
+              const searchInput = document.getElementById("search");
+              const definitions = document.querySelectorAll(".Definition");
+              
+              searchInput.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+              searchInput.style.color = "white";
+              searchInput.style.border = "1px solid #444";
+              searchInput.style.padding = "10px";
+              searchInput.style.borderRadius = "5px";
+              searchInput.style.fontSize = "16px";
+              searchInput.style.width = "96%";
+              searchInput.style.outline = "none";
+              searchInput.style.fontFamily = "inherit";
+              searchInput.style.display = "block";
+              searchInput.style.margin = "0 auto";
+              
+              searchInput.addEventListener("input", function () {
+                  const query = searchInput.value.toLowerCase();
+                  
+                  definitions.forEach(definition => {
+                      const word = definition.querySelector("b").innerText.toLowerCase();
+                      
+                      if (word.includes(query)) {
+                          definition.style.display = "block";
+                      } else {
+                          definition.style.display = "none";
+                      }
+                  });
+              });
+          });
+
+
+        </script>
         <div class="mainArea">
             <div class="top">
                 <div class="logo">
@@ -80,8 +115,7 @@
 
 
 
-                        
-
+<input type="text" id="search" placeholder="Search words...">
     <div class="Definition">
         <orange><b>[abstemious]</b></orange><a name="abstemious"></a>
         - refraining from drinking or eating in excess
