@@ -17,7 +17,9 @@ const links = {
     16 : "https://www.sonyclassics.com/whiplash/",
     17 : "https://www.ace-attorney.com/trilogy/us/",
     18 : "https://animalcrossing.nintendo.com/new-horizons/",
-    19 : "https://store.steampowered.com/app/1675830/1000xRESIST/"
+    19 : "https://store.steampowered.com/app/1675830/1000xRESIST/",
+    20 : "https://hi.ramiels.me/",
+    21 : "https://www.geoguessr.com/"
 }
 
 
