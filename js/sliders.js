@@ -49,7 +49,7 @@ function addEventListeners() {
 async function main() {
     const sliders = document.querySelectorAll(".sliderImages");
     const numSliders = sliders.length;
-    let maxImageCount = 19; // maximum number of images expected
+    let maxImageCount = 21; // maximum number of images expected
 
     let promises = Array.from({length: maxImageCount}, (_, i) => {
         let url = `./images/banners/banner (${i+1}).png`;
